@@ -99,7 +99,7 @@ voting in the absence of information.
 Given a coordinate $i\in [n]$ and binary string $x$, let $x^{\oplus i}$ denote 
 the same string except with the $i$-th component flipped. 
 
-:::{.definition name="pivot, influence"}
+:::{.definition #pivotInfluence name="pivot, influence"}
 A coordinate $i\in [n]$ is pivotal for $f$ on input $x$ if 
 $f(x)\neq f(x^{\oplus i})$. The influence of $i$ on $f$ is the probability 
 that $i$ is pivotal for random input: 
@@ -153,7 +153,7 @@ Coordinate $i$ is relevant for $f$ if $\Inf_i[f]>0$.
 In other words, there exists at least one $x$ for which 
 $f(x)\neq f(x^{\oplus i})$. 
 :::
-:::{.proposition name="influence of monotone functions"}
+:::{.proposition #monotoneInfluence name="influence of monotone functions"}
 If $f$ is monotone, then $\Inf_i[f] = \hat f(i)$. 
 :::
 _Proof:_ By monoticity, $\pd i f(x) = 1$ (and never $-1$) 
@@ -220,4 +220,28 @@ the average sensitivity
     = \Exp\left[\sum_j 1_{f(\mbf x)\neq f(\mbf x^{\oplus j})}\right] 
     = \Exp[\sens_f(\mbf x)]
 \] 
+Proposition \@ref(prp:monotoneInfluence) implies that for monotone 
+functions, $\Inft[f] = \sum \hat f(j)$. 
 :::
+:::{.proposition}
+The fraction of boundary edges in the Hamming cube is $\Inft[f]/n$. 
+:::
+_Proof:_ Follows immediately from our discussion \@ref(def:pivotInfluence) 
+that $\Inf_i[f]$ is the fraction of boundary edges for 
+$i$-component changing edges in the $f$-coloring of the Hamming cube. 
+
+The linear fourier coefficients have a natural interpretation from a 
+social choice perspective. 
+
+:::{.proposition}
+Let $f:\P^n\to \P$ be a voting rule for a $2$-candidate election. 
+Given votes $\mbf x$ and let $\mbf w$ be the number of votes which agree with the 
+outcome $f(\mbf x)$ of the election, then 
+\[ 
+    \Exp[\mbf w] = \df n 2 + \df 1 2 \sum \hat f(j) 
+\] 
+:::
+_Proof:_ Follows immediately from the definition of $\mbf w$ and 
+\[ 
+    \sum \hat f(j) = \Exp[f(\mbf x)(\mbf x_1 + \cdots + \mbf x_n)]
+\] 

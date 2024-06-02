@@ -236,7 +236,7 @@ voting in the absence of information.</p>
 <p>Given a coordinate <span class="math inline">\(i\in [n]\)</span> and binary string <span class="math inline">\(x\)</span>, let <span class="math inline">\(x^{\oplus i}\)</span> denote
 the same string except with the <span class="math inline">\(i\)</span>-th component flipped.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-28" class="definition"><strong>Definition 2.7  (pivot, influence) </strong></span>A coordinate <span class="math inline">\(i\in [n]\)</span> is pivotal for <span class="math inline">\(f\)</span> on input <span class="math inline">\(x\)</span> if
+<p><span id="def:pivotInfluence" class="definition"><strong>Definition 2.7  (pivot, influence) </strong></span>A coordinate <span class="math inline">\(i\in [n]\)</span> is pivotal for <span class="math inline">\(f\)</span> on input <span class="math inline">\(x\)</span> if
 <span class="math inline">\(f(x)\neq f(x^{\oplus i})\)</span>. The influence of <span class="math inline">\(i\)</span> on <span class="math inline">\(f\)</span> is the probability
 that <span class="math inline">\(i\)</span> is pivotal for random input:
 <span class="math display">\[  
@@ -250,7 +250,7 @@ is the fraction of boundary edges out of edges which involve a change in <span c
 <p>The dictator function satisfies <span class="math inline">\(\mathrm{Inf}_j[\pm \chi_k]=\delta_{jk}\)</span>. The
 “or” and “and” functions satisfy <span class="math inline">\(\mathrm{Inf}_i[\mathrm{OR}_n] = \mathrm{Inf}_i[\mathrm{AND}_n] = 2^{1-n}\)</span>.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-29" class="definition"><strong>Definition 2.8  (derivative) </strong></span>The <span class="math inline">\(i\)</span>-th (discrete) derivative operator
+<p><span id="def:unlabeled-div-28" class="definition"><strong>Definition 2.8  (derivative) </strong></span>The <span class="math inline">\(i\)</span>-th (discrete) derivative operator
 <span class="math inline">\(\partial_{i}:L^2(\mathcal P^n)\to L^2(\mathcal P^n)\)</span> is defined by
 <span class="math display">\[
     \partial_{i} f(x) = \dfrac{f(x^{i\mapsto 1}) - f(x^{i\mapsto 0})} 2
@@ -283,12 +283,12 @@ This constitutes the generalization of influence to real-valued boolean
 functions.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-30" class="definition"><strong>Definition 2.9  (relevance) </strong></span>Coordinate <span class="math inline">\(i\)</span> is relevant for <span class="math inline">\(f\)</span> if <span class="math inline">\(\mathrm{Inf}_i[f]&gt;0\)</span>.
+<p><span id="def:unlabeled-div-29" class="definition"><strong>Definition 2.9  (relevance) </strong></span>Coordinate <span class="math inline">\(i\)</span> is relevant for <span class="math inline">\(f\)</span> if <span class="math inline">\(\mathrm{Inf}_i[f]&gt;0\)</span>.
 In other words, there exists at least one <span class="math inline">\(x\)</span> for which
 <span class="math inline">\(f(x)\neq f(x^{\oplus i})\)</span>.</p>
 </div>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-31" class="proposition"><strong>Proposition 2.2  (influence of monotone functions) </strong></span>If <span class="math inline">\(f\)</span> is monotone, then <span class="math inline">\(\mathrm{Inf}_i[f] = \hat f(i)\)</span>.</p>
+<p><span id="prp:monotoneInfluence" class="proposition"><strong>Proposition 2.2  (influence of monotone functions) </strong></span>If <span class="math inline">\(f\)</span> is monotone, then <span class="math inline">\(\mathrm{Inf}_i[f] = \hat f(i)\)</span>.</p>
 </div>
 <p><em>Proof:</em> By monoticity, <span class="math inline">\(\partial_{i} f(x) = 1\)</span> (and never <span class="math inline">\(-1\)</span>)
 if coordinate <span class="math inline">\(i\)</span> is pivotal for <span class="math inline">\(x\)</span>. Then
@@ -297,7 +297,7 @@ if coordinate <span class="math inline">\(i\)</span> is pivotal for <span class=
     \widehat{\partial_{i} f}(0) = \hat f(i)
 \]</span></p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-32" class="proposition"><strong>Proposition 2.3  </strong></span>If <span class="math inline">\(f\)</span> is transitive-symmetric and monotone, then
+<p><span id="prp:unlabeled-div-30" class="proposition"><strong>Proposition 2.3  </strong></span>If <span class="math inline">\(f\)</span> is transitive-symmetric and monotone, then
 <span class="math display">\[
     \forall i: \inf_i[f] \leq 1/\sqrt n
 \]</span></p>
@@ -312,7 +312,7 @@ independent of <span class="math inline">\(i\)</span>. By Parseval
     \implies \mathrm{Inf}_i[f] = \hat f(1) \leq 1/\sqrt n
 \]</span></p>
 <div class="definition">
-<p><span id="def:unlabeled-div-33" class="definition"><strong>Definition 2.10  (expectation operator, Laplacian) </strong></span>The <span class="math inline">\(i\)</span>-th expectation operator is the linear operator
+<p><span id="def:unlabeled-div-31" class="definition"><strong>Definition 2.10  (expectation operator, Laplacian) </strong></span>The <span class="math inline">\(i\)</span>-th expectation operator is the linear operator
 <span class="math display">\[
     \mathbb E_i f(x) = \mathbb E_{\mathbf x_i}[f(x_1, \cdots, \mathbf x_i, \cdots, x_n)]
 \]</span>
@@ -338,7 +338,7 @@ It follows immediately from fourier formulas and previous definitions that
 <div id="total-influence" class="section level3 unnumbered hasAnchor">
 <h3>Total influence<a href="influence-and-spectral-learning.html#total-influence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-34" class="definition"><strong>Definition 2.11  (total influence, sensitivity) </strong></span>The total influence of <span class="math inline">\(f:\mathcal P^n\to \mathbb R\)</span> is
+<p><span id="def:unlabeled-div-32" class="definition"><strong>Definition 2.11  (total influence, sensitivity) </strong></span>The total influence of <span class="math inline">\(f:\mathcal P^n\to \mathbb R\)</span> is
 <span class="math display">\[
     \mathrm{Inf}_\Sigma[f] = \sum \mathrm{Inf}_j[f]
 \]</span>
@@ -352,8 +352,30 @@ the average sensitivity
     \mathrm{Inf}_\Sigma[f] = \sum_j \Pr[f(\mathbf x)\neq f(\mathbf x^{\oplus j})
     = \mathbb E\left[\sum_j 1_{f(\mathbf x)\neq f(\mathbf x^{\oplus j})}\right]
     = \mathbb E[\mathrm{sens}_f(\mathbf x)]
+\]</span>
+Proposition <a href="influence-and-spectral-learning.html#prp:monotoneInfluence">2.2</a> implies that for monotone
+functions, <span class="math inline">\(\mathrm{Inf}_\Sigma[f] = \sum \hat f(j)\)</span>.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-33" class="proposition"><strong>Proposition 2.4  </strong></span>The fraction of boundary edges in the Hamming cube is <span class="math inline">\(\mathrm{Inf}_\Sigma[f]/n\)</span>.</p>
+</div>
+<p><em>Proof:</em> Follows immediately from our discussion <a href="influence-and-spectral-learning.html#def:pivotInfluence">2.7</a>
+that <span class="math inline">\(\mathrm{Inf}_i[f]\)</span> is the fraction of boundary edges for
+<span class="math inline">\(i\)</span>-component changing edges in the <span class="math inline">\(f\)</span>-coloring of the Hamming cube.</p>
+<p>The linear fourier coefficients have a natural interpretation from a
+social choice perspective.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-34" class="proposition"><strong>Proposition 2.5  </strong></span>Let <span class="math inline">\(f:\mathcal P^n\to \mathcal P\)</span> be a voting rule for a <span class="math inline">\(2\)</span>-candidate election.
+Given votes <span class="math inline">\(\mathbf x\)</span> and let <span class="math inline">\(\mathbf w\)</span> be the number of votes which agree with the
+outcome <span class="math inline">\(f(\mathbf x)\)</span> of the election, then
+<span class="math display">\[
+    \mathbb E[\mathbf w] = \dfrac n 2 + \dfrac 1 2 \sum \hat f(j)
 \]</span></p>
 </div>
+<p><em>Proof:</em> Follows immediately from the definition of <span class="math inline">\(\mathbf w\)</span> and
+<span class="math display">\[
+    \sum \hat f(j) = \mathbb E[f(\mathbf x)(\mathbf x_1 + \cdots + \mathbf x_n)]
+\]</span></p>
 
 </div>
 </div>
