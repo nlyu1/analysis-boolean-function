@@ -1,0 +1,97 @@
+# Influence and Spectral Learning
+
+## Influence, Noise Stablity, and Social Choice {#Sec2}
+This subsection corresponds to Chapter 2. Our focus is on 
+the uniformity and dependence behavior of functions on their inputs. 
+
+### Social choice functions {-}
+A boolean function $\P^n\to \P$ may also be viewed 
+as a voting function for an election with $2$ candidates 
+and $n$ voters. The most common voting function, for odd $n$ 
+is 
+\[ 
+    \maj_n(x) = \sgn\left(\sum x_j\right)
+\] 
+
+:::{.definition name="dictator, junta"}
+The $i$-th dictator (projection) function is $\chi_i(x) = x_i$. 
+Similarly, a function $\P^n\to \P$ is a $k$-junta if it depends 
+upon _at most_ $k$ input coordinates. Informally, a function 
+is a junta if it depends on a constant number of coordinates. 
+:::
+
+:::{.definition name="weighted majority (linear threshold) function"}
+$f$ is a weighted majority function or, equivalently, a (linear) 
+threshold function if, for some $a\in \R^n$ 
+\[ 
+    f(x) = \sgn(a\cdot x)
+\] 
+A depth-$d$ recursive majority of $n$ functions, denoted $\maj_n^{\otimes d}$ 
+is a function of $n^d$ bits defined inductively 
+\[ 
+    \maj_n^{\otimes (d+1)}(x^{(1)}, \cdots, x^{(n)}) = 
+    \maj_n(
+        \maj_n^{\otimes d}(x^{(1)}), \cdots, \maj_n^{\otimes d}(x^{(n)})
+    )
+\] 
+:::
+:::{.definition name="tribes function"}
+The tribes function of width $w$ and size $s$ $\Tribes_{ws}:\P^{ws}\to \P$ is 
+\[ 
+    \Tribes((x_{ws})) = \bigcup_{j=1}^s \left(\bigcap_{k=1}^w x_{ws}\right)
+\] 
+There are $s$ tribes, each containing $w$ elements. 
+:::
+
+### Dependence properties {-}
+:::{.definition name="miscellaneous properties"} 
+$f:\P^n\to \P$ (naturally extending to codomain $\R$) is
+
+- monotone if $x\leq y\implies f(x)\leq f(y)$ where $x\leq y$ is defined coordinate-wise. 
+- odd if $f(-x) = -f(x)$. 
+- unanimous if $f(1, \cdots, 1)=1$ and $f(-1, \cdots, -1)=-1$. 
+- symmetric if $f\circ \pi = f$ for all permutations. In other words, $f$ only depends 
+    on the weight of $x$.
+::: 
+:::{.theorem name="May's theorem"} 
+$f:\P^n \to \P$ is symmetric and monotone if and only if 
+$f(x)=\sgn(1\cdot x+a_0)$. If $f$ is additionally odd, then $n$ must be odd 
+and $f=\maj_n$. 
+:::
+_Proof:_ Symmetry demands $f(x)=g(1\cdot x)$ for some $g:\mbb N\to \R$. 
+One may show that $y\mapsto \sgn(|y|+a_0)$ is the only admissible choice. 
+
+Properties of functions we have seen so far: 
+
+- Majority function for $n$ odd has all four properties. 
+- The dictator function is monotone, odd, and unanimous, so do recursive majority functions. 
+- Tribes functions are monotone, unanimous, and transitive-symmetric. 
+
+:::{.definition name="transitive symmetry"}
+$f$ is transitive-symmetric if for all $j, k\in [n]$ there exists 
+a permutation $\pi\in S_n$ with $\pi(j)=k$ such that 
+$f\circ \pi = f$. 
+
+Symmetry demands that _all_ arrangements of coordinates are equivalent. 
+Transitive symmetry only demands that every pair of coordinates are equivalent. 
+:::
+
+:::{.definition name="impartial culture assumption"}
+The impartial culture assumption assumes that all $n$ voters' 
+preferences are independent and uniformly random. This corresponds to 
+voting in the absence of information. 
+:::
+
+
+### Influence and derivatives {-}
+Given a coordinate $i\in [n]$ and binary string $x$, let $x^{\oplus i}$ denote 
+the same string except with the $i$-th component flipped. 
+
+:::{.definition name="pivot, influence"}
+A coordinate $i\in [n]$ is pivotal for $f$ on input $x$ if 
+$f(x)\neq f(x^{\oplus i})$. The influence of $i$ on $f$ is the probability 
+that $i$ is pivotal for random input: 
+\[  
+    \Inf_i[f] = \Pr[f(\mbf x)\neq f(\mbf x^{\oplus i})]
+\] 
+:::

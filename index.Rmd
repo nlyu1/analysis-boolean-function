@@ -1,0 +1,76 @@
+---
+title: "Analysis of Boolean Functions"
+author: "Nicholas Lyu"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [refs.bib]
+biblio-style: "numeric"
+split_bib: yes
+link-citations: true
+---
+
+\usepackage{cancel}
+\newcommand{\pd}[1]{\partial_{#1}}
+
+\newcommand{\mbb}{\mathbb}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\mrm}{\mathrm}
+\newcommand{\mca}{\mathcal}
+\newcommand{\mfk}{\mathfrak}
+
+\newcommand{\tr}{\mrm{tr}} 
+\newcommand{\df}{\dfrac}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\dag}{\dagger}
+
+\newcommand{\Cl}{\mca C}
+\newcommand{\Gr}{\mca G}
+\newcommand{\Pf}{\mrm{Pf}}
+\newcommand{\Pa}{\mca P}
+
+\newcommand{\poly}{\mrm{poly}}
+\newcommand{\B}{\mca B}
+\newcommand{\P}{\mca P}
+\newcommand{\R}{\mbb R}
+\newcommand{\C}{\mbb C}
+\newcommand{\F}{\mbb F}
+\newcommand{\sgn}{\mrm{sgn}}
+
+\newcommand{\Exp}{\mbb E}
+\newcommand{\Var}{\mrm{Var}}
+\newcommand{\Cov}{\mrm{Cov}}
+\newcommand{\dist}{\mrm{dist}}
+\newcommand{\maj}{\mrm{Maj}}
+\newcommand{\Tribes}{\mrm{Tribes}}
+\newcommand{\Inf}{\mrm{Inf}}
+
+
+
+# Preface {-}
+Reading notes and select exercise solutions for 
+Ryan O'Donnell's book _Analysis of Boolean functions_ 
+[@o2014analysis]. 
+
+In addition to being a rich field of computer science in its own right, 
+the fourier analysis of boolean functions provide a classical basis 
+for the fourier analysis of qubit states. 
+
+These notes are organized as follows
+
+1. Section \@ref(Sec1) corresponds to Chapters 1 & 8 of the book, introducing 
+    fourier concepts with boolean functions then generalizing to other domains. 
+2. Section \@ref(Sec2) expores the stability and dependence of boolean functions. 
+
+## Notation {-}
+
+- $\P=\{\pm 1, \times\}$ for parity, and $\B=(\{0, 1\}, +)$ for boolean values.  
+- $[n] \equiv \{1, \cdots, n\}$, occasionally $\{0, \cdots, n-1\}$ depending 
+    on context. 
+- $\Delta(x, y)=|\{i|x_i\neq y_i\}|$ denotes the Hamming distance. 
+- $A\Delta B$ denote the symmetric difference $(A-A\cap B)\cup (B-A\cap B)$. 
+- Boldface letters like $\mbf x$ denote random variables, drawn from a uniform 
+    distribution over their domain unless otherwise specified. 
+- Under the mapping $(0, 1)$ corresponding to false, true, the representation of 
+    truth values in $\P$ is somewhat counter-intuitively $(-1, 1)\mapsto$ true, false. 

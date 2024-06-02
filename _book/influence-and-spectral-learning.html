@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Influence and Spectral Learning | Analysis of Boolean Functions</title>
+  <meta name="description" content="2 Influence and Spectral Learning | Analysis of Boolean Functions" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Influence and Spectral Learning | Analysis of Boolean Functions" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Influence and Spectral Learning | Analysis of Boolean Functions" />
+  
+  
+  
+
+<meta name="author" content="Nicholas Lyu" />
+
+
+<meta name="date" content="2024-06-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Sec1.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="Sec1.html"><a href="Sec1.html"><i class="fa fa-check"></i><b>1</b> Fourier Expansion for General Domain</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="Sec1.html"><a href="Sec1.html#boolean-function"><i class="fa fa-check"></i><b>1.1</b> Boolean function</a>
+<ul>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#natural-and-parity-bases"><i class="fa fa-check"></i>Natural and parity bases</a></li>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#fourier-formulas"><i class="fa fa-check"></i>Fourier formulas</a></li>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#relative-densities-and-convolution"><i class="fa fa-check"></i>Relative densities and convolution</a></li>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#almost-linear-functions-property-testing-and-blr"><i class="fa fa-check"></i>Almost linear functions, property testing, and BLR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html"><i class="fa fa-check"></i><b>2</b> Influence and Spectral Learning</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#Sec2"><i class="fa fa-check"></i><b>2.1</b> Influence, Noise Stablity, and Social Choice</a>
+<ul>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#social-choice-functions"><i class="fa fa-check"></i>Social choice functions</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#dependence-properties"><i class="fa fa-check"></i>Dependence properties</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#influence-and-derivatives"><i class="fa fa-check"></i>Influence and derivatives</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of Boolean Functions</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="influence-and-spectral-learning" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Influence and Spectral Learning<a href="influence-and-spectral-learning.html#influence-and-spectral-learning" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="Sec2" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Influence, Noise Stablity, and Social Choice<a href="influence-and-spectral-learning.html#Sec2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This subsection corresponds to Chapter 2. Our focus is on
+the uniformity and dependence behavior of functions on their inputs.</p>
+<div id="social-choice-functions" class="section level3 unnumbered hasAnchor">
+<h3>Social choice functions<a href="influence-and-spectral-learning.html#social-choice-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A boolean function <span class="math inline">\(\mathcal P^n\to \mathcal P\)</span> may also be viewed
+as a voting function for an election with <span class="math inline">\(2\)</span> candidates
+and <span class="math inline">\(n\)</span> voters. The most common voting function, for odd <span class="math inline">\(n\)</span>
+is
+<span class="math display">\[
+    \mathrm{Maj}_n(x) = \mathrm{sgn}\left(\sum x_j\right)
+\]</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-21" class="definition"><strong>Definition 2.1  (dictator, junta) </strong></span>The <span class="math inline">\(i\)</span>-th dictator (projection) function is <span class="math inline">\(\chi_i(x) = x_i\)</span>.
+Similarly, a function <span class="math inline">\(\mathcal P^n\to \mathcal P\)</span> is a <span class="math inline">\(k\)</span>-junta if it depends
+upon <em>at most</em> <span class="math inline">\(k\)</span> input coordinates. Informally, a function
+is a junta if it depends on a constant number of coordinates.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-22" class="definition"><strong>Definition 2.2  (weighted majority (linear threshold) function) </strong></span><span class="math inline">\(f\)</span> is a weighted majority function or, equivalently, a (linear)
+threshold function if, for some <span class="math inline">\(a\in \mathbb R^n\)</span>
+<span class="math display">\[
+    f(x) = \mathrm{sgn}(a\cdot x)
+\]</span>
+A depth-<span class="math inline">\(d\)</span> recursive majority of <span class="math inline">\(n\)</span> functions, denoted <span class="math inline">\(\mathrm{Maj}_n^{\otimes d}\)</span>
+is a function of <span class="math inline">\(n^d\)</span> bits defined inductively
+<span class="math display">\[
+    \mathrm{Maj}_n^{\otimes (d+1)}(x^{(1)}, \cdots, x^{(n)}) =
+    \mathrm{Maj}_n(
+        \mathrm{Maj}_n^{\otimes d}(x^{(1)}), \cdots, \mathrm{Maj}_n^{\otimes d}(x^{(n)})
+    )
+\]</span></p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-23" class="definition"><strong>Definition 2.3  (tribes function) </strong></span>The tribes function of width <span class="math inline">\(w\)</span> and size <span class="math inline">\(s\)</span> <span class="math inline">\(\mathrm{Tribes}_{ws}:\mathcal P^{ws}\to \mathcal P\)</span> is
+<span class="math display">\[
+    \mathrm{Tribes}((x_{ws})) = \bigcup_{j=1}^s \left(\bigcap_{k=1}^w x_{ws}\right)
+\]</span>
+There are <span class="math inline">\(s\)</span> tribes, each containing <span class="math inline">\(w\)</span> elements.</p>
+</div>
+</div>
+<div id="dependence-properties" class="section level3 unnumbered hasAnchor">
+<h3>Dependence properties<a href="influence-and-spectral-learning.html#dependence-properties" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="definition">
+<p><span id="def:unlabeled-div-24" class="definition"><strong>Definition 2.4  (miscellaneous properties) </strong></span><span class="math inline">\(f:\mathcal P^n\to \mathcal P\)</span> (naturally extending to codomain <span class="math inline">\(\mathbb R\)</span>) is</p>
+<ul>
+<li>monotone if <span class="math inline">\(x\leq y\implies f(x)\leq f(y)\)</span> where <span class="math inline">\(x\leq y\)</span> is defined coordinate-wise.</li>
+<li>odd if <span class="math inline">\(f(-x) = -f(x)\)</span>.</li>
+<li>unanimous if <span class="math inline">\(f(1, \cdots, 1)=1\)</span> and <span class="math inline">\(f(-1, \cdots, -1)=-1\)</span>.</li>
+<li>symmetric if <span class="math inline">\(f\circ \pi = f\)</span> for all permutations. In other words, <span class="math inline">\(f\)</span> only depends
+on the weight of <span class="math inline">\(x\)</span>.</li>
+</ul>
+</div>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-25" class="theorem"><strong>Theorem 2.1  (May's theorem) </strong></span><span class="math inline">\(f:\mathcal P^n \to \mathcal P\)</span> is symmetric and monotone if and only if
+<span class="math inline">\(f(x)=\mathrm{sgn}(1\cdot x+a_0)\)</span>. If <span class="math inline">\(f\)</span> is additionally odd, then <span class="math inline">\(n\)</span> must be odd
+and <span class="math inline">\(f=\mathrm{Maj}_n\)</span>.</p>
+</div>
+<p><em>Proof:</em> Symmetry demands <span class="math inline">\(f(x)=g(1\cdot x)\)</span> for some <span class="math inline">\(g:\mathbb N\to \mathbb R\)</span>.
+One may show that <span class="math inline">\(y\mapsto \mathrm{sgn}(|y|+a_0)\)</span> is the only admissible choice.</p>
+<p>Properties of functions we have seen so far:</p>
+<ul>
+<li>Majority function for <span class="math inline">\(n\)</span> odd has all four properties.</li>
+<li>The dictator function is monotone, odd, and unanimous, so do recursive majority functions.</li>
+<li>Tribes functions are monotone, unanimous, and transitive-symmetric.</li>
+</ul>
+<div class="definition">
+<p><span id="def:unlabeled-div-26" class="definition"><strong>Definition 2.5  (transitive symmetry) </strong></span><span class="math inline">\(f\)</span> is transitive-symmetric if for all <span class="math inline">\(j, k\in [n]\)</span> there exists
+a permutation <span class="math inline">\(\pi\in S_n\)</span> with <span class="math inline">\(\pi(j)=k\)</span> such that
+<span class="math inline">\(f\circ \pi = f\)</span>.</p>
+<p>Symmetry demands that <em>all</em> arrangements of coordinates are equivalent.
+Transitive symmetry only demands that every pair of coordinates are equivalent.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-27" class="definition"><strong>Definition 2.6  (impartial culture assumption) </strong></span>The impartial culture assumption assumes that all <span class="math inline">\(n\)</span> voters’
+preferences are independent and uniformly random. This corresponds to
+voting in the absence of information.</p>
+</div>
+</div>
+<div id="influence-and-derivatives" class="section level3 unnumbered hasAnchor">
+<h3>Influence and derivatives<a href="influence-and-spectral-learning.html#influence-and-derivatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Given a coordinate <span class="math inline">\(i\in [n]\)</span> and binary string <span class="math inline">\(x\)</span>, let <span class="math inline">\(x^{\oplus i}\)</span> denote
+the same string except with the <span class="math inline">\(i\)</span>-th component flipped.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-28" class="definition"><strong>Definition 2.7  (pivot, influence) </strong></span>A coordinate <span class="math inline">\(i\in [n]\)</span> is pivotal for <span class="math inline">\(f\)</span> on input <span class="math inline">\(x\)</span> if
+<span class="math inline">\(f(x)\neq f(x^{\oplus i})\)</span>. The influence of <span class="math inline">\(i\)</span> on <span class="math inline">\(f\)</span> is the probability
+that <span class="math inline">\(i\)</span> is pivotal for random input:
+<span class="math display">\[  
+    \mathrm{Inf}_i[f] = \Pr[f(\mathbf x)\neq f(\mathbf x^{\oplus i})]
+\]</span></p>
+</div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Sec1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

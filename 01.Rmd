@@ -1,0 +1,315 @@
+# Fourier Expansion for General Domain {#Sec1}
+
+This section corresponds to chapters $1$ and $8$. 
+We demonstrating how the space of Boolean functions 
+$\P\to \R$ form a Hilbert space, and then generalize this construction.
+
+## Boolean function
+### Natural and parity bases {-}
+Fix $n$ and consider Boolean functions $\P^n\to \P$. 
+Without loss of generality we may expand their range to $\F\in \{\R, \C\}$ 
+and define 
+\[ 
+    L^2(\P^n) = \{\text{all functions $\P^n\to \F$}\}
+\] 
+Addition and scalar multiplication are defined in the most obvious way. 
+
+::: {.definition name="natural basis of boolean functions"}
+Let $I_y$ where $y\in \P^n$ denote the indicator polynomial 
+\[ 
+    I_y(x) = \begin{cases}
+        1 & x = y \\ 0 & \text{else}
+    \end{cases}
+\] 
+The indicator polynomials form the natural basis for boolean functions, 
+since for all $f\in L^2(\P^n)$
+\[ 
+    f(x) = f(y)I_y(x) \implies f = f(y)I_y
+\] 
+Note the implicit sum over $y\in \P^n$. 
+:::
+
+Let $x_i(y) = y_i, i\in [n]$; this is overloading the notation, as 
+$x_i$ can now both be a function or an input variable, depending on context.
+
+::: {.definition name="parity function"}
+Given $J\in \P^n$, define the parity function $\chi_J:\P^n\to \F$. 
+\[ 
+    \chi_J = \prod_{J_i=1} x_i \implies \chi_J(x) = (-1)^{J\cdot x}
+\] 
+Every indicator function can be expanded in parity functions 
+\begin{equation}
+   I_y = \prod_{i=1}^n \df{1+y_ix_i}{2} \impliedby (\exists i: x_i\neq y_i\implies I_y=0)
+   (\#eq:indicator)
+\end{equation}
+As a consequence, every indicator function $I_y$, thus every 
+boolean function, can be expanded as a 
+multi-linear polynomial in $(x_j)$. Note that multilinearity is due 
+to the multilinearity of the indicator expansion \@ref(eq:indicator) and the 
+fact that in the $\F_2$ representation, $x_i^2=1$. 
+:::
+
+### Fourier formulas {-}
+::: {.theorem name="fourier expansion of boolean functions"}
+Every boolean function $f\in L^2(\P^n)$ is a unique linear combination of parity functions 
+\[ 
+    f = \widehat f(J) \chi_J 
+\] 
+The coefficients $\widehat f(J)$ form the _fourier spectrum_ of $f$. Equivalently, 
+$\widehat f\in L^2(\F^n)$ is the _fourier transform_ of $f$. Note that the range of $\widehat f$ 
+is in general not $\P$. 
+:::
+_Proof:_ Note that $\dim L^2(\P^n) = 2^n$. 
+The natural basis $(I_J)$ and parity basis $(\chi_J)$ both contain $2^n$ 
+elements and there is a linear transformation between them, so both are bases 
+for $L^2(\P^n)$. 
+
+::: {.remark name="product structure of fourier basis"}
+Note that the parity basis function $\chi_J$ is a product of elements which are supported on 
+(dependent upon) only a component of the input. This is not true of the natural basis. 
+:::
+
+::: {.definition name="natural and fourier expansions of max"}
+Consider $\max_2$ with $\max_2(x, y)=-1$ if $x=y=-1$ else $1$. 
+Using the formula above 
+\begin{align}
+    {\max}_2 
+    &= I_{(1, 1)} + I_{(1, -1)} + I_{(-1, 1)} - I_{(-1, -1)}  \\ 
+    &= \df 1 4 (1+x_1)(1+x_2) + \df 1 4 (1+x_1)(1-x_2) + \df 1 4 (1-x_1)(1+x_2) - \df 1 4 (1-x_1)(1-x_2) \\ 
+    &= \cdots = \df 1 2 (1 + x_1 + x_2 - x_1x_2)
+\end{align}
+:::
+
+::: {.definition name="inner product"}
+Define the inner product $\la \cdot, \cdot\ra: L^2(\P^n)\times L^2(\P^n)\to \F$ via 
+\[ 
+    \la f | g\ra = \df 1 {2^n} \la f(x)|g(x)\ra 
+\] 
+Again, note the implicit sum over $x$. Here $\la f(x)|g(x)\ra$ is the inner product on $\F$ 
+\[ 
+    \la a|b\ra = \begin{cases}
+        ab & \F=\R \\ 
+        a^*b & \F=\C
+    \end{cases}
+\] 
+In most generality $\F=\C$, in which case 
+$\la f|g\ra = \Exp[f(\mbf x)^*g(\mbf x)]$. 
+Norms are defined naturally 
+\[ 
+    \|f\|_p = \Exp[|f(\mbf x)|^{p}]^{1/p}
+\] 
+:::
+The indicator basis is apparantly orthonormal since $I_xI_y=0$ if $x\neq y$. 
+
+::: {.theorem name="orthonormality of fourier basis"}
+$\la \chi_J|\chi_K\ra = \delta_{JK}$. 
+:::
+_Proof:_ Using $x_j^2=1$, we obtain $\chi_J\chi_K=\chi_{J\Delta K}$. 
+We further have $\Exp[\chi_J(\mbf x)] = \delta_{J 0}$, then 
+\[ 
+    \la \chi_J|\chi_K\ra = \Exp[\chi_J(\mbf x)\chi_K(\mbf x)] = 
+    \Exp[\chi_{J\Delta K}(\mbf x)] = \delta_{0(J\Delta K)} = \delta_{JK}
+\] 
+
+One may also verify that this is non-degenerate, bilinear and (skew)-symmetric. 
+The usual projection and norm formulas follow. 
+
+::: {.theorem name="Parseval's theorem"} 
+$\|f\|_2^2 = \Exp[|f(\mbf x)|^2] = \sum_J |\widehat f(J)|^2$
+In particular, if $f$ is boolean-valued (range in $\F_2$) then 
+$\la f|f\ra = 1$. 
+:::
+
+::: {.theorem name="Plancherel's theorem"} 
+$\la f|g\ra = \Exp[f(\mbf x)^*g(\mbf x)] = \widehat f(J)^*g(J)$
+:::
+
+::: {.definition #hammingDistance name="Hamming distance"}
+Define the Hamming distance between two boolean functions _with range $\P$_ 
+\[ 
+    \dist(f, g) = \Pr[f(\mbf x)\neq g(\mbf x)]
+\] 
+Note that $\la f|g\ra = 1 - 2\, \dist(f, g)$. 
+:::
+
+::: {.definition name="boolean function statistics"}
+A boolean function, viewed as $f(\mbf x)$, is also a real-valued discrete 
+random variable. Its statistics are defined in the most obvious ways 
+
+- $\Exp[f] = \widehat f(0)$; here we are using $\F_2$ and $\P$ interchangeably. 
+    This is the constant term in the fourier expansion of $f$ about $\F_2$ representation. 
+- $\Cov(f, g) = \la f |g\ra - \Exp[f]\Exp[g] = \sum_{J\neq 0} \widehat f(J)^* g(\mbf J)$. 
+::: 
+
+::: {.definition name="fourier weight, spectral sample, degree weight"}
+The (fourier) weight of $f$ on a set $J$ is simply $|\widehat f(J)|^2$. 
+In particular, Parseval's theorem implies that the fourier weight of a boolean function 
+defines a probability distribution on the Hamming cube, which may be identified 
+with the power set $\mca P([n])$. 
+
+The spectral sample $\mbf S_f$ is the probability distribution over $\mca P([n])$ 
+according to $\widehat f$. 
+
+Each multi-index $J$ has a degree (its polynomial degree in $(x_j)$). 
+The fourier weight of $f$ at degree $k$ is 
+\[ 
+    \mbf W^k[f] = \sum_{|J|=k} |\widehat f(J)|^2 = \Pr_{S\sim \mca S_f}[|S|=k]
+\] 
+:::
+
+### Relative densities and convolution {-}
+For this section we use $\B$ instead of $\P$ to represent the boolean 
+domain, so that addition is the natural operation. 
+
+::: {.definition name="density function"}
+A (relative probability) density function on the Hamming cube $\P^n$ 
+is a nonnegative function satisfying $\Exp[\varphi(\mbf x)] = 1$. 
+In this case we interchangeably write $\varphi$ as a density function itself. 
+:::
+Given density $\varphi$, note that 
+\[ 
+    \Exp_{\mbf y\sim \varphi}[g(\mbf y)] = \df 1 {2^n} \varphi(y)g(y) 
+    = \la \varphi, g\ra 
+\] 
+
+::: {.definition name="indicator function"}
+Given $A\subset \B^n$, let $1_A:\B^n\to \B$ for the $(0, 1)$ indicator 
+function. 
+For $A\neq \emptyset$, denote by $\varphi_A = 1_A/\Exp[1_A]$ the 
+density function associated with uniform distribution over $A$. 
+:::
+
+::: {.example name="singleton density"}
+Let $\{0\}\subset \B^n$ denote the singleton set of the vector 
+with all entries $0$
+\[ 
+    \varphi_{\{0\}}(y) 
+    = 2^n I_{\{0\}}(y) = 2^n \prod (1+y_j) = \sum_J \chi_J(y)
+\] 
+Note that $\pm$ are equivalent in the $\B$ algebra. 
+:::
+
+::: {.definition name="convolution"}
+Given $f, g:\B^n\to \R$, define $f\ast g:\P^n\to \R$ by 
+\begin{equation}
+    (f\ast g)(x) = \Exp[f(\mbf y)g(x\pm \mbf y)]
+    (\#eq:bitConvolution)
+\end{equation}
+The counterpart for $f, g\in \P^n\to \R$ is 
+$(f\ast g)(x) = \Exp[f(\mbf y)g(x\mbf y)]$. 
+Note that if $\varphi$ is a density function, then 
+\[ 
+    (\varphi \ast g)(x) = \Exp_{y\sim \varphi}[g(x+\mbf y)] 
+    \implies \Exp_{\mbf y\sim \varphi}[g(\mbf y)] = (\varphi \ast g)(0)
+\] 
+:::
+
+::: {.theorem name="fourier theorem"} 
+Given $f, g:\B^n\to \C$, for all $J$ 
+\[ 
+    \widehat{f\ast g}(J) = \widehat f(J) \widehat g(J)
+\] 
+:::
+_Proof:_ Using the projection formula, definition, substitute 
+$\mbf z=\mbf x - \mbf y$, and $\chi_J(x+y)=J\cdot (x+y) = \chi_J(x)\chi_J(y)$ 
+\begin{align}
+    \widehat{f\ast g}(J) 
+    &= \Exp_{\mbf x}[(f\ast g)(\mbf x) \chi_J(\mbf x)] 
+    = \Exp_{\mbf {x, y}}[f(\mbf y)g(\mbf x - \mbf y) \chi_J(\mbf x)] \\ 
+    &= \Exp_{\mbf{x, z}}[f(\mbf y)g(\mbf z)\chi_J(\mbf z + \mbf y)] \\ 
+    &= \Exp_{\mbf{x, z}}[f(\mbf y)\chi_J(\mbf y) f(\mbf z)\chi_J(\mbf z)] 
+    = \widehat f(J)\widehat g(J)
+\end{align}
+
+This suffices to prove that convolution is associative and commutative. 
+
+
+### Almost linear functions, property testing, and BLR {-}
+::: {.definition name="(approximate) linearity of boolean functions"} 
+A function $f:\B^n\to \B$ is linear if either of the following conditions hold: 
+
+1. $\forall x, y: f(x+y) = f(x)+f(y)$ 
+2. $f(x) = a\cdot x$ for some $a\in \B^n$ 
+
+These conditions are indeed equivalent: $2\implies 1$ is trivial. Given $1$, 
+define $(e_j)_k=\delta_{jk}$, then $(2)$ is satisfied by $a_j=f(e_j)$. 
+
+We propose two definitions of approximately linear: 
+
+1. $f(x+y)=f(x)+f(y)$ for almost all pairs $x, y$
+2. For some $a$, $f(x)=a\cdot x$ for almost all $x$. 
+
+Here $2\implies 1$ is robust: if $(2)$ is satisfied for $x, y$, then 
+$1$ is satisfied for the pair, too. 
+The converse is not papparant but nevertheless true. 
+:::
+
+::: {.definition name="closeness"}
+Recalling the Hamming distance \@ref(def:hammingDistance). 
+Two boolean functions are $\epsilon$-close of $\dist(f, g)\leq \epsilon$ 
+otherwise $\epsilon$-far. Given a nonempty property $P$ on $n$-bit 
+Boolean functions, define 
+\[ 
+    \dist(f, P) = \min_{g\in P} \dist(f, g)
+\] 
+:::
+
+We define approximate linearity by criterion (2) above: $f$ is 
+$\epsilon$-close to being linear if there is a linear function $x\mapsto a\cdot x$ 
+which is less than $\epsilon$-close to $f$. 
+The test below shows that $1\implies 2$ above: 
+
+::: {.theorem name="BLR test"}
+The BLR procedure tests for linearity as follows: 
+
+- Choose $\mbf {x, y}\in \B^n$ independently. 
+- Query $f$ at $\mbf {x, y}, \mbf x + \mbf y$. 
+- Accept if $f(\mbf x)+f(\mbf y) = f(\mbf x + \mbf y)$. 
+
+If BLR test accepts $f$ with probability $1-\epsilon$, then $f$ 
+is $\epsilon$-close to being linear. 
+:::
+_Proof:_ Encode output by $\pm 1$ so that acceptance condition becomes 
+$f(\mbf x)f(\mbf y) = f(\mbf x + \mbf y)$, then 
+\[ 
+    \df 1 2 + \df 1 2 f(\mbf x)f(\mbf y)f(\mbf x + \mbf y) 
+    = \begin{cases}
+        1 & f(\mbf x)f(\mbf y) = f(\mbf x + \mbf y) \\ 
+        0 & \text{otherwise}
+    \end{cases}
+\] 
+Note that the input representation is still $\B$ so formula 
+\@ref(eq:bitConvolution) still applies, then 
+\begin{align}
+    1-\epsilon 
+    &= \Pr(\text{accept}) 
+    = \df 1 2 + \df 1 2 \Exp_{\mbf x}[f(\mbf x) \Exp_{\mbf y}[f(\mbf y)f(\mbf x + \mbf y)]] \\ 
+    &= \df 1 2 + \df 1 2 \Exp_{\mbf x}[f(\mbf x) (f\ast f)(\mbf x)]  \\ 
+    &= \df 1 2 + \df 1 2 \la f, f\ast f\ra = \df 1 2 + \df 1 2 \sum_J \hat f(J)^3 \\ 
+    1 - 2\epsilon 
+    &= \sum_J \hat f(J)^3 \leq [\max_K \hat f(K)] \sum_J \hat f(J)^2 = \max_K \hat f(K)
+\end{align}
+For the last equation we used $\sum \hat f(J)^2 = \la f, f\ra = \Exp[f^2] = 1$. 
+Now, recall that all linear functions are of the form $\chi_J$, then 
+\[ 
+    1 - 2\epsilon \max_K \hat f(K) = \max_K \la f, \chi_K\ra = \max_K [1 - 2\dist(f, \chi_K)] 
+    = 1 - 2\min_K \dist(f, \chi_K)
+\] 
+It follows that $\epsilon \geq \min_K \dist(f, \chi_K)$. 
+
+If $f$ is $\epsilon$-close to $\chi_J$, we can determine $\chi_J(x)$ 
+with high probability for a given $x$ using the following procedure: 
+
+::: {.proposition name="local correctibility of linear functions"}
+Suppose $f:\B^n\to \P$ is $\epsilon$-close to $\chi_J$, then 
+for every $x\in \B^n$, the following procedure outputs $\chi_J(x)$ with 
+probability at least $1-2\epsilon$: 
+
+1. Choose $\mbf y\sim \B^n$ 
+2. Query $f$ at $\mbf y$ and $x+\mbf y$ 
+3. Output $f(\mbf y)f(x+\mbf y)$ 
+Note that even if $f(x)\neq \chi_J(x)$, the procedure above is still able to 
+determine $\chi_J(x)$ with high probability based on $f$. 
+:::
+_Proof:_ The probability that $f(x+\mbf y)\neq \chi_J(x+\mbf y)$ and 
+$f(\mbf y)\neq \chi_J(\mbf y)$ is upper-bounded by $1-2\epsilon$. 
