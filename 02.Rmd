@@ -73,8 +73,20 @@ a permutation $\pi\in S_n$ with $\pi(j)=k$ such that
 $f\circ \pi = f$. 
 
 Symmetry demands that _all_ arrangements of coordinates are equivalent. 
-Transitive symmetry only demands that every pair of coordinates are equivalent. 
+Transitive symmetry only demands that every pair of 
+coordinates are equivalent. 
 :::
+
+:::{.proposition #transitiveSymmetryLinearF} 
+If $f$ is transitive symmetric, then 
+\[ 
+    \forall j, k: \hat f(j) = \hat f(k) 
+\] 
+:::
+_Proof:_ If $f=f\circ \pi$, where $\pi$ is a permutation, 
+then $\hat f = \hat f\circ \pi^{-1}$ since 
+$\chi_J\circ \pi = \chi_{\pi^{-1}(J)}$. The result follows by 
+definition of transitive symmetry. 
 
 :::{.definition name="impartial culture assumption"}
 The impartial culture assumption assumes that all $n$ voters' 
@@ -83,7 +95,7 @@ voting in the absence of information.
 :::
 
 
-### Influence and derivatives {-}
+### Influence, derivative, and expectation {-}
 Given a coordinate $i\in [n]$ and binary string $x$, let $x^{\oplus i}$ denote 
 the same string except with the $i$-th component flipped. 
 
@@ -93,5 +105,119 @@ $f(x)\neq f(x^{\oplus i})$. The influence of $i$ on $f$ is the probability
 that $i$ is pivotal for random input: 
 \[  
     \Inf_i[f] = \Pr[f(\mbf x)\neq f(\mbf x^{\oplus i})]
+\] 
+:::
+One may consider a boolean function providing a $2$-coloring 
+of the hamming cube. Each boundary edge which connect vertices of different 
+colorings then correspond a "change in decision." Consequently $\Inf_i$ 
+is the fraction of boundary edges out of edges which involve a change in $x_i$. 
+
+The dictator function satisfies $\Inf_j[\pm \chi_k]=\delta_{jk}$. The 
+"or" and "and" functions satisfy $\Inf_i[\mrm{OR}_n] = \Inf_i[\mrm{AND}_n] = 2^{1-n}$. 
+
+:::{.definition name="derivative"}
+The $i$-th (discrete) derivative operator 
+$\pd i:L^2(\P^n)\to L^2(\P^n)$ is defined by
+\[ 
+    \pd i f(x) = \df {f(x^{i\mapsto 1}) - f(x^{i\mapsto 0})} 2
+\] 
+Note that $\pd i f$ does not depend on $x_i$ anymore. 
+It is also manifestly linear and obeys the product rule 
+for the boolean function algebra. 
+\[ 
+    \pd i fg = (\pd i f)g + f(\pd i g)
+\] 
+Note that this is only true for $f, g\in L^2(\P^n)$, 
+which are _multilinear_ polynomials in $(\chi_i)$. Then 
+\[ 
+    \pd i \chi_J = 
+    \begin{cases} 
+        \chi_{J-\{i\}} & i\in S \\ 
+        0 & \text{otherwise}
+    \end{cases} \implies 
+    \pd i f = \sum_{i\in J} \hat f(J) \chi_{J - \{i\}}
+\] 
+We also have a fourier formula for influence 
+\begin{equation}
+    \Inf_i[f] = \Exp[(\pd i f(\mbf x))^2] = \|\pd i f\|_2^2 
+    = \sum_{i\in J} \hat f(J)^2
+    (\#eq:fourierInfluence)
+\end{equation}
+The influence of coordinate $i$ on $f$ is the sum of 
+the fourier weights of $f$ on sets containing $i$. 
+This constitutes the generalization of influence to real-valued boolean 
+functions. 
+:::
+:::{.definition name="relevance"}
+Coordinate $i$ is relevant for $f$ if $\Inf_i[f]>0$. 
+In other words, there exists at least one $x$ for which 
+$f(x)\neq f(x^{\oplus i})$. 
+:::
+:::{.proposition name="influence of monotone functions"}
+If $f$ is monotone, then $\Inf_i[f] = \hat f(i)$. 
+:::
+_Proof:_ By monoticity, $\pd i f(x) = 1$ (and never $-1$) 
+if coordinate $i$ is pivotal for $x$. Then 
+\[ 
+    \Inf_i[f] = \Exp[\pd i f] = \la \pd i f, \chi_{\emptyset}] = 
+    \widehat{\pd i f}(0) = \hat f(i)
+\] 
+
+:::{.proposition} 
+If $f$ is transitive-symmetric and monotone, then 
+\[ 
+    \forall i: \inf_i[f] \leq 1/\sqrt n
+\] 
+:::
+_Proof:_ the intuition here is that influence can only be positive, 
+the total influence from all positions are bounded, and that any 
+two positions are roughly equivalent. 
+By proposition \@ref(prp:transitiveSymmetryLinearF) $\Inf_i[f] = \hat f(1)$ 
+independent of $i$. By Parseval 
+\[ 
+    \Exp[f^2] = 1 = \sum \hat f(J)^2 \geq \sum_j \hat f(j)^2 = n\hat f(1)^2 
+    \implies \Inf_i[f] = \hat f(1) \leq 1/\sqrt n
+\] 
+
+:::{.definition name="expectation operator, Laplacian"}
+The $i$-th expectation operator is the linear operator 
+\[ 
+    \Exp_i f(x) = \Exp_{\mbf x_i}[f(x_1, \cdots, \mbf x_i, \cdots, x_n)]
+\] 
+Note that $\Exp_i f$ again does not depend on $x_i$. For boolean functions, 
+following the analysis for $\pd j$ above 
+\begin{align}
+    \Exp_i f(x) &= \df{f(x^{i\to 1}) + f(x^{(i\to -1)})} 2 \\ 
+    f(x) &= x_j \pd j f(x) + \Exp_j f(x) \quad \text{for any fixed $j$} \\ 
+    \Exp_i f &= \sum_{i\notin J} \hat f(J) \chi_J 
+\end{align}
+The coordinate Laplacian operator $\Lap_i$ is defined by 
+\[ 
+    \Lap_i f = f - \Exp_i f = x_i \pd i f
+\] 
+It follows immediately from fourier formulas and previous definitions that 
+\begin{align}
+    \Lap_i f(x) &= x_i \pd i f(x) 
+    = \df{f(x) - f(x^{\oplus i})} 2 = \sum_{i\in J}\hat f(J) \chi_J\\ 
+   \Inf_i[f] &= \sum_{i\in J} \hat f(J)^2 = \la \Lap_i f, \Lap_i f\ra = \la f, \Lap_i f\ra 
+\end{align}
+:::
+
+### Total influence {-}
+:::{.definition name="total influence, sensitivity"}
+The total influence of $f:\P^n\to \R$ is 
+\[ 
+    \Inft[f] = \sum \Inf_j[f]
+\] 
+The sensitivity is defined as 
+\[ 
+    \sens_f(x) = \text{number of pivotal coordinates of $f$ at $x$}
+\] 
+For boolean functions, the total influence equal to 
+the average sensitivity
+\[ 
+    \Inft[f] = \sum_j \Pr[f(\mbf x)\neq f(\mbf x^{\oplus j}) 
+    = \Exp\left[\sum_j 1_{f(\mbf x)\neq f(\mbf x^{\oplus j})}\right] 
+    = \Exp[\sens_f(\mbf x)]
 \] 
 :::

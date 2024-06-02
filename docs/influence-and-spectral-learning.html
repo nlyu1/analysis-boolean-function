@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Influence and Spectral Learning | Analysis of Boolean Functions</title>
-  <meta name="description" content="2 Influence and Spectral Learning | Analysis of Boolean Functions" />
+  <title>2 Influence and Spectral Learning | Algebraic Analysis of Classical and Quantum Computation</title>
+  <meta name="description" content="2 Influence and Spectral Learning | Algebraic Analysis of Classical and Quantum Computation" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Influence and Spectral Learning | Analysis of Boolean Functions" />
+  <meta property="og:title" content="2 Influence and Spectral Learning | Algebraic Analysis of Classical and Quantum Computation" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Influence and Spectral Learning | Analysis of Boolean Functions" />
+  <meta name="twitter:title" content="2 Influence and Spectral Learning | Algebraic Analysis of Classical and Quantum Computation" />
   
   
   
@@ -107,6 +107,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#fourier-formulas"><i class="fa fa-check"></i>Fourier formulas</a></li>
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#relative-densities-and-convolution"><i class="fa fa-check"></i>Relative densities and convolution</a></li>
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#almost-linear-functions-property-testing-and-blr"><i class="fa fa-check"></i>Almost linear functions, property testing, and BLR</a></li>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#boolean-function-algebra"><i class="fa fa-check"></i>Boolean function algebra</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html"><i class="fa fa-check"></i><b>2</b> Influence and Spectral Learning</a>
@@ -115,7 +116,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#social-choice-functions"><i class="fa fa-check"></i>Social choice functions</a></li>
 <li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#dependence-properties"><i class="fa fa-check"></i>Dependence properties</a></li>
-<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#influence-and-derivatives"><i class="fa fa-check"></i>Influence and derivatives</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#influence-derivative-and-expectation"><i class="fa fa-check"></i>Influence, derivative, and expectation</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#total-influence"><i class="fa fa-check"></i>Total influence</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -128,7 +130,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of Boolean Functions</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Algebraic Analysis of Classical and Quantum Computation</a>
           </h1>
         </div>
 
@@ -210,16 +212,27 @@ One may show that <span class="math inline">\(y\mapsto \mathrm{sgn}(|y|+a_0)\)</
 a permutation <span class="math inline">\(\pi\in S_n\)</span> with <span class="math inline">\(\pi(j)=k\)</span> such that
 <span class="math inline">\(f\circ \pi = f\)</span>.</p>
 <p>Symmetry demands that <em>all</em> arrangements of coordinates are equivalent.
-Transitive symmetry only demands that every pair of coordinates are equivalent.</p>
+Transitive symmetry only demands that every pair of
+coordinates are equivalent.</p>
 </div>
+<div class="proposition">
+<p><span id="prp:transitiveSymmetryLinearF" class="proposition"><strong>Proposition 2.1  </strong></span>If <span class="math inline">\(f\)</span> is transitive symmetric, then
+<span class="math display">\[
+    \forall j, k: \hat f(j) = \hat f(k)
+\]</span></p>
+</div>
+<p><em>Proof:</em> If <span class="math inline">\(f=f\circ \pi\)</span>, where <span class="math inline">\(\pi\)</span> is a permutation,
+then <span class="math inline">\(\hat f = \hat f\circ \pi^{-1}\)</span> since
+<span class="math inline">\(\chi_J\circ \pi = \chi_{\pi^{-1}(J)}\)</span>. The result follows by
+definition of transitive symmetry.</p>
 <div class="definition">
 <p><span id="def:unlabeled-div-27" class="definition"><strong>Definition 2.6  (impartial culture assumption) </strong></span>The impartial culture assumption assumes that all <span class="math inline">\(n\)</span> voters’
 preferences are independent and uniformly random. This corresponds to
 voting in the absence of information.</p>
 </div>
 </div>
-<div id="influence-and-derivatives" class="section level3 unnumbered hasAnchor">
-<h3>Influence and derivatives<a href="influence-and-spectral-learning.html#influence-and-derivatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="influence-derivative-and-expectation" class="section level3 unnumbered hasAnchor">
+<h3>Influence, derivative, and expectation<a href="influence-and-spectral-learning.html#influence-derivative-and-expectation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Given a coordinate <span class="math inline">\(i\in [n]\)</span> and binary string <span class="math inline">\(x\)</span>, let <span class="math inline">\(x^{\oplus i}\)</span> denote
 the same string except with the <span class="math inline">\(i\)</span>-th component flipped.</p>
 <div class="definition">
@@ -228,6 +241,117 @@ the same string except with the <span class="math inline">\(i\)</span>-th compon
 that <span class="math inline">\(i\)</span> is pivotal for random input:
 <span class="math display">\[  
     \mathrm{Inf}_i[f] = \Pr[f(\mathbf x)\neq f(\mathbf x^{\oplus i})]
+\]</span></p>
+</div>
+<p>One may consider a boolean function providing a <span class="math inline">\(2\)</span>-coloring
+of the hamming cube. Each boundary edge which connect vertices of different
+colorings then correspond a “change in decision.” Consequently <span class="math inline">\(\mathrm{Inf}_i\)</span>
+is the fraction of boundary edges out of edges which involve a change in <span class="math inline">\(x_i\)</span>.</p>
+<p>The dictator function satisfies <span class="math inline">\(\mathrm{Inf}_j[\pm \chi_k]=\delta_{jk}\)</span>. The
+“or” and “and” functions satisfy <span class="math inline">\(\mathrm{Inf}_i[\mathrm{OR}_n] = \mathrm{Inf}_i[\mathrm{AND}_n] = 2^{1-n}\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-29" class="definition"><strong>Definition 2.8  (derivative) </strong></span>The <span class="math inline">\(i\)</span>-th (discrete) derivative operator
+<span class="math inline">\(\partial_{i}:L^2(\mathcal P^n)\to L^2(\mathcal P^n)\)</span> is defined by
+<span class="math display">\[
+    \partial_{i} f(x) = \dfrac{f(x^{i\mapsto 1}) - f(x^{i\mapsto 0})} 2
+\]</span>
+Note that <span class="math inline">\(\partial_{i} f\)</span> does not depend on <span class="math inline">\(x_i\)</span> anymore.
+It is also manifestly linear and obeys the product rule
+for the boolean function algebra.
+<span class="math display">\[
+    \partial_{i} fg = (\partial_{i} f)g + f(\partial_{i} g)
+\]</span>
+Note that this is only true for <span class="math inline">\(f, g\in L^2(\mathcal P^n)\)</span>,
+which are <em>multilinear</em> polynomials in <span class="math inline">\((\chi_i)\)</span>. Then
+<span class="math display">\[
+    \partial_{i} \chi_J =
+    \begin{cases}
+        \chi_{J-\{i\}} &amp; i\in S \\
+        0 &amp; \text{otherwise}
+    \end{cases} \implies
+    \partial_{i} f = \sum_{i\in J} \hat f(J) \chi_{J - \{i\}}
+\]</span>
+We also have a fourier formula for influence
+<span class="math display" id="eq:fourierInfluence">\[\begin{equation}
+    \mathrm{Inf}_i[f] = \mathbb E[(\partial_{i} f(\mathbf x))^2] = \|\partial_{i} f\|_2^2
+    = \sum_{i\in J} \hat f(J)^2
+    \tag{2.1}
+\end{equation}\]</span>
+The influence of coordinate <span class="math inline">\(i\)</span> on <span class="math inline">\(f\)</span> is the sum of
+the fourier weights of <span class="math inline">\(f\)</span> on sets containing <span class="math inline">\(i\)</span>.
+This constitutes the generalization of influence to real-valued boolean
+functions.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-30" class="definition"><strong>Definition 2.9  (relevance) </strong></span>Coordinate <span class="math inline">\(i\)</span> is relevant for <span class="math inline">\(f\)</span> if <span class="math inline">\(\mathrm{Inf}_i[f]&gt;0\)</span>.
+In other words, there exists at least one <span class="math inline">\(x\)</span> for which
+<span class="math inline">\(f(x)\neq f(x^{\oplus i})\)</span>.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-31" class="proposition"><strong>Proposition 2.2  (influence of monotone functions) </strong></span>If <span class="math inline">\(f\)</span> is monotone, then <span class="math inline">\(\mathrm{Inf}_i[f] = \hat f(i)\)</span>.</p>
+</div>
+<p><em>Proof:</em> By monoticity, <span class="math inline">\(\partial_{i} f(x) = 1\)</span> (and never <span class="math inline">\(-1\)</span>)
+if coordinate <span class="math inline">\(i\)</span> is pivotal for <span class="math inline">\(x\)</span>. Then
+<span class="math display">\[
+    \mathrm{Inf}_i[f] = \mathbb E[\partial_{i} f] = \langle\partial_{i} f, \chi_{\emptyset}] =
+    \widehat{\partial_{i} f}(0) = \hat f(i)
+\]</span></p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-32" class="proposition"><strong>Proposition 2.3  </strong></span>If <span class="math inline">\(f\)</span> is transitive-symmetric and monotone, then
+<span class="math display">\[
+    \forall i: \inf_i[f] \leq 1/\sqrt n
+\]</span></p>
+</div>
+<p><em>Proof:</em> the intuition here is that influence can only be positive,
+the total influence from all positions are bounded, and that any
+two positions are roughly equivalent.
+By proposition <a href="influence-and-spectral-learning.html#prp:transitiveSymmetryLinearF">2.1</a> <span class="math inline">\(\mathrm{Inf}_i[f] = \hat f(1)\)</span>
+independent of <span class="math inline">\(i\)</span>. By Parseval
+<span class="math display">\[
+    \mathbb E[f^2] = 1 = \sum \hat f(J)^2 \geq \sum_j \hat f(j)^2 = n\hat f(1)^2
+    \implies \mathrm{Inf}_i[f] = \hat f(1) \leq 1/\sqrt n
+\]</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-33" class="definition"><strong>Definition 2.10  (expectation operator, Laplacian) </strong></span>The <span class="math inline">\(i\)</span>-th expectation operator is the linear operator
+<span class="math display">\[
+    \mathbb E_i f(x) = \mathbb E_{\mathbf x_i}[f(x_1, \cdots, \mathbf x_i, \cdots, x_n)]
+\]</span>
+Note that <span class="math inline">\(\mathbb E_i f\)</span> again does not depend on <span class="math inline">\(x_i\)</span>. For boolean functions,
+following the analysis for <span class="math inline">\(\partial_{j}\)</span> above
+<span class="math display">\[\begin{align}
+    \mathbb E_i f(x) &amp;= \dfrac{f(x^{i\to 1}) + f(x^{(i\to -1)})} 2 \\
+    f(x) &amp;= x_j \partial_{j} f(x) + \mathbb E_j f(x) \quad \text{for any fixed $j$} \\
+    \mathbb E_i f &amp;= \sum_{i\notin J} \hat f(J) \chi_J
+\end{align}\]</span>
+The coordinate Laplacian operator <span class="math inline">\(\mathrm{L}_i\)</span> is defined by
+<span class="math display">\[
+    \mathrm{L}_i f = f - \mathbb E_i f = x_i \partial_{i} f
+\]</span>
+It follows immediately from fourier formulas and previous definitions that
+<span class="math display">\[\begin{align}
+    \mathrm{L}_i f(x) &amp;= x_i \partial_{i} f(x)
+    = \dfrac{f(x) - f(x^{\oplus i})} 2 = \sum_{i\in J}\hat f(J) \chi_J\\
+   \mathrm{Inf}_i[f] &amp;= \sum_{i\in J} \hat f(J)^2 = \langle\mathrm{L}_i f, \mathrm{L}_i f\rangle= \langle f, \mathrm{L}_i f\rangle
+\end{align}\]</span></p>
+</div>
+</div>
+<div id="total-influence" class="section level3 unnumbered hasAnchor">
+<h3>Total influence<a href="influence-and-spectral-learning.html#total-influence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="definition">
+<p><span id="def:unlabeled-div-34" class="definition"><strong>Definition 2.11  (total influence, sensitivity) </strong></span>The total influence of <span class="math inline">\(f:\mathcal P^n\to \mathbb R\)</span> is
+<span class="math display">\[
+    \mathrm{Inf}_\Sigma[f] = \sum \mathrm{Inf}_j[f]
+\]</span>
+The sensitivity is defined as
+<span class="math display">\[
+    \mathrm{sens}_f(x) = \text{number of pivotal coordinates of $f$ at $x$}
+\]</span>
+For boolean functions, the total influence equal to
+the average sensitivity
+<span class="math display">\[
+    \mathrm{Inf}_\Sigma[f] = \sum_j \Pr[f(\mathbf x)\neq f(\mathbf x^{\oplus j})
+    = \mathbb E\left[\sum_j 1_{f(\mathbf x)\neq f(\mathbf x^{\oplus j})}\right]
+    = \mathbb E[\mathrm{sens}_f(\mathbf x)]
 \]</span></p>
 </div>
 

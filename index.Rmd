@@ -1,5 +1,5 @@
 ---
-title: "Analysis of Boolean Functions"
+title: "Algebraic Analysis of Classical and Quantum Computation"
 author: "Nicholas Lyu"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -44,7 +44,10 @@ link-citations: true
 \newcommand{\dist}{\mrm{dist}}
 \newcommand{\maj}{\mrm{Maj}}
 \newcommand{\Tribes}{\mrm{Tribes}}
+\newcommand{\Inft}{\mrm{Inf}_\Sigma}
 \newcommand{\Inf}{\mrm{Inf}}
+\newcommand{\sens}{\mrm{sens}}
+\newcommand{\Lap}{\mrm{L}}
 
 
 
@@ -55,7 +58,21 @@ Ryan O'Donnell's book _Analysis of Boolean functions_
 
 In addition to being a rich field of computer science in its own right, 
 the fourier analysis of boolean functions provide a classical basis 
-for the fourier analysis of qubit states. 
+for the fourier analysis of quantum computation. 
+
+The space of boolean functions $f(x_1, \cdots, x_n)$ 
+over $n$ inputs form a freely generated algebra 
+in which the generators $x_1, \cdots x_n$ are involutary, commutative, 
+and generate an orthonormal basis. 
+Subtly generalizing these constraints yield the full qubit algebra: 
+
+- Replacing commutativity over $x_1, \cdots, x_{2n}$ 
+    with _anti-commutativity_ yields the majorana 
+    algebra over a finite number of modes, 
+    or equivalently the qubit algebra under the Jordan-wigner transform. 
+- Supplementing $x_1, \cdots, x_{2n}$ with $p_1, \cdots p_{2n}$ 
+    such that $[x_i, p_j] = \delta_{ij} x_ip_j$ corresponds to the Pauli 
+    algebra with $x_i \mapsto X_i, p_i\mapsto Z_i$. 
 
 These notes are organized as follows
 
@@ -74,3 +91,7 @@ These notes are organized as follows
     distribution over their domain unless otherwise specified. 
 - Under the mapping $(0, 1)$ corresponding to false, true, the representation of 
     truth values in $\P$ is somewhat counter-intuitively $(-1, 1)\mapsto$ true, false. 
+- Given a bitstring $x$ and index $i$, $x^{\oplus i}$ denotes $x$ with the $i$-th index 
+    negated. Similarly, $x^{i\mapsto b}$ denotes $x$ with the $i$-th index replaced by $b$.
+- Let $E$ denote an event, for example, $a=b$. Then $1_E$ denotes the indicator random variable 
+    which is $1$ when the event is true, and $0$ otherwise. 

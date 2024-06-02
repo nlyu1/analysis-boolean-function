@@ -26,8 +26,16 @@ def:unlabeled-div-23
 def:unlabeled-div-24
 thm:unlabeled-div-25
 def:unlabeled-div-26
+prp:transitiveSymmetryLinearF
 def:unlabeled-div-27
 def:unlabeled-div-28
+def:unlabeled-div-29
+eq:fourierInfluence
+def:unlabeled-div-30
+prp:unlabeled-div-31
+prp:unlabeled-div-32
+def:unlabeled-div-33
+def:unlabeled-div-34
 Sec1
 boolean-function
 influence-and-spectral-learning

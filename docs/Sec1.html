@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Fourier Expansion for General Domain | Analysis of Boolean Functions</title>
-  <meta name="description" content="1 Fourier Expansion for General Domain | Analysis of Boolean Functions" />
+  <title>1 Fourier Expansion for General Domain | Algebraic Analysis of Classical and Quantum Computation</title>
+  <meta name="description" content="1 Fourier Expansion for General Domain | Algebraic Analysis of Classical and Quantum Computation" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 Fourier Expansion for General Domain | Analysis of Boolean Functions" />
+  <meta property="og:title" content="1 Fourier Expansion for General Domain | Algebraic Analysis of Classical and Quantum Computation" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Fourier Expansion for General Domain | Analysis of Boolean Functions" />
+  <meta name="twitter:title" content="1 Fourier Expansion for General Domain | Algebraic Analysis of Classical and Quantum Computation" />
   
   
   
@@ -107,6 +107,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#fourier-formulas"><i class="fa fa-check"></i>Fourier formulas</a></li>
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#relative-densities-and-convolution"><i class="fa fa-check"></i>Relative densities and convolution</a></li>
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#almost-linear-functions-property-testing-and-blr"><i class="fa fa-check"></i>Almost linear functions, property testing, and BLR</a></li>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#boolean-function-algebra"><i class="fa fa-check"></i>Boolean function algebra</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html"><i class="fa fa-check"></i><b>2</b> Influence and Spectral Learning</a>
@@ -115,7 +116,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#social-choice-functions"><i class="fa fa-check"></i>Social choice functions</a></li>
 <li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#dependence-properties"><i class="fa fa-check"></i>Dependence properties</a></li>
-<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#influence-and-derivatives"><i class="fa fa-check"></i>Influence and derivatives</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#influence-derivative-and-expectation"><i class="fa fa-check"></i>Influence, derivative, and expectation</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#total-influence"><i class="fa fa-check"></i>Total influence</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -128,7 +130,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of Boolean Functions</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Algebraic Analysis of Classical and Quantum Computation</a>
           </h1>
         </div>
 
@@ -217,17 +219,17 @@ Using the formula above
 <div class="definition">
 <p><span id="def:unlabeled-div-6" class="definition"><strong>Definition 1.4  (inner product) </strong></span>Define the inner product <span class="math inline">\(\langle\cdot, \cdot\rangle: L^2(\mathcal P^n)\times L^2(\mathcal P^n)\to \mathbb F\)</span> via
 <span class="math display">\[
-    \langle f | g\rangle= \dfrac 1 {2^n} \langle f(x)|g(x)\rangle
+    \langle f, g\rangle= \dfrac 1 {2^n} \langle f(x), g(x)\rangle
 \]</span>
-Again, note the implicit sum over <span class="math inline">\(x\)</span>. Here <span class="math inline">\(\langle f(x)|g(x)\rangle\)</span> is the inner product on <span class="math inline">\(\mathbb F\)</span>
+Again, note the implicit sum over <span class="math inline">\(x\)</span>. Here <span class="math inline">\(\langle f(x), g(x)\rangle\)</span> is the inner product on <span class="math inline">\(\mathbb F\)</span>
 <span class="math display">\[
-    \langle a|b\rangle= \begin{cases}
+    \langle a, b\rangle= \begin{cases}
         ab &amp; \mathbb F=\mathbb R\\
         a^*b &amp; \mathbb F=\mathbb C
     \end{cases}
 \]</span>
 In most generality <span class="math inline">\(\mathbb F=\mathbb C\)</span>, in which case
-<span class="math inline">\(\langle f|g\rangle= \mathbb E[f(\mathbf x)^*g(\mathbf x)]\)</span>.
+<span class="math inline">\(\langle f, g\rangle= \mathbb E[f(\mathbf x)^*g(\mathbf x)]\)</span>.
 Norms are defined naturally
 <span class="math display">\[
     \|f\|_p = \mathbb E[|f(\mathbf x)|^{p}]^{1/p}
@@ -235,12 +237,12 @@ Norms are defined naturally
 </div>
 <p>The indicator basis is apparantly orthonormal since <span class="math inline">\(I_xI_y=0\)</span> if <span class="math inline">\(x\neq y\)</span>.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-7" class="theorem"><strong>Theorem 1.2  (orthonormality of fourier basis) </strong></span><span class="math inline">\(\langle\chi_J|\chi_K\rangle= \delta_{JK}\)</span>.</p>
+<p><span id="thm:unlabeled-div-7" class="theorem"><strong>Theorem 1.2  (orthonormality of fourier basis) </strong></span><span class="math inline">\(\langle\chi_J, \chi_K\rangle= \delta_{JK}\)</span>.</p>
 </div>
 <p><em>Proof:</em> Using <span class="math inline">\(x_j^2=1\)</span>, we obtain <span class="math inline">\(\chi_J\chi_K=\chi_{J\Delta K}\)</span>.
 We further have <span class="math inline">\(\mathbb E[\chi_J(\mathbf x)] = \delta_{J 0}\)</span>, then
 <span class="math display">\[
-    \langle\chi_J|\chi_K\rangle= \mathbb E[\chi_J(\mathbf x)\chi_K(\mathbf x)] =
+    \langle\chi_J, \chi_K\rangle= \mathbb E[\chi_J(\mathbf x)\chi_K(\mathbf x)] =
     \mathbb E[\chi_{J\Delta K}(\mathbf x)] = \delta_{0(J\Delta K)} = \delta_{JK}
 \]</span></p>
 <p>One may also verify that this is non-degenerate, bilinear and (skew)-symmetric.
@@ -251,14 +253,14 @@ In particular, if <span class="math inline">\(f\)</span> is boolean-valued (rang
 <span class="math inline">\(\langle f|f\rangle= 1\)</span>.</p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-9" class="theorem"><strong>Theorem 1.4  (Plancherel's theorem) </strong></span><span class="math inline">\(\langle f|g\rangle= \mathbb E[f(\mathbf x)^*g(\mathbf x)] = \widehat f(J)^*g(J)\)</span></p>
+<p><span id="thm:unlabeled-div-9" class="theorem"><strong>Theorem 1.4  (Plancherel's theorem) </strong></span><span class="math inline">\(\langle f, g\rangle= \mathbb E[f(\mathbf x)^*g(\mathbf x)] = \widehat f(J)^*g(J)\)</span></p>
 </div>
 <div class="definition">
 <p><span id="def:hammingDistance" class="definition"><strong>Definition 1.5  (Hamming distance) </strong></span>Define the Hamming distance between two boolean functions <em>with range <span class="math inline">\(\mathcal P\)</span></em>
 <span class="math display">\[
     \mathrm{dist}(f, g) = \Pr[f(\mathbf x)\neq g(\mathbf x)]
 \]</span>
-Note that <span class="math inline">\(\langle f|g\rangle= 1 - 2\, \mathrm{dist}(f, g)\)</span>.</p>
+Note that <span class="math inline">\(\langle f, g\rangle= 1 - 2\, \mathrm{dist}(f, g)\)</span>.</p>
 </div>
 <div class="definition">
 <p><span id="def:unlabeled-div-10" class="definition"><strong>Definition 1.6  (boolean function statistics) </strong></span>A boolean function, viewed as <span class="math inline">\(f(\mathbf x)\)</span>, is also a real-valued discrete
@@ -266,7 +268,7 @@ random variable. Its statistics are defined in the most obvious ways</p>
 <ul>
 <li><span class="math inline">\(\mathbb E[f] = \widehat f(0)\)</span>; here we are using <span class="math inline">\(\mathbb F_2\)</span> and <span class="math inline">\(\mathcal P\)</span> interchangeably.
 This is the constant term in the fourier expansion of <span class="math inline">\(f\)</span> about <span class="math inline">\(\mathbb F_2\)</span> representation.</li>
-<li><span class="math inline">\(\mathrm{Cov}(f, g) = \langle f |g\rangle- \mathbb E[f]\mathbb E[g] = \sum_{J\neq 0} \widehat f(J)^* g(\mathbf J)\)</span>.</li>
+<li><span class="math inline">\(\mathrm{Cov}(f, g) = \langle f , g\rangle- \mathbb E[f]\mathbb E[g] = \sum_{J\neq 0} \widehat f(J)^* g(\mathbf J)\)</span>.</li>
 </ul>
 </div>
 <div class="definition">
@@ -429,6 +431,30 @@ determine <span class="math inline">\(\chi_J(x)\)</span> with high probability b
 </div>
 <p><em>Proof:</em> The probability that <span class="math inline">\(f(x+\mathbf y)\neq \chi_J(x+\mathbf y)\)</span> and
 <span class="math inline">\(f(\mathbf y)\neq \chi_J(\mathbf y)\)</span> is upper-bounded by <span class="math inline">\(1-2\epsilon\)</span>.</p>
+</div>
+<div id="boolean-function-algebra" class="section level3 unnumbered hasAnchor">
+<h3>Boolean function algebra<a href="Sec1.html#boolean-function-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Extending beyond O’Connel,
+we see that the space of boolean functions <span class="math inline">\(L^2(\mathcal P^n)\)</span>
+is in fact a finite freely-generated Hilbert algebra with <span class="math inline">\(n\)</span> generators
+<span class="math display">\[
+    \chi_i(x) = x_i, \quad \chi_i:\mathcal P^n\to \mathbb F
+\]</span>
+Scalar multiplication and addition are defined in the most obvious ways,
+and algebraic multiplication is specified by
+<span class="math display">\[
+    [\chi_i, \chi_j] = 0, \quad \chi_i^2 = 1
+\]</span>
+The generators generate the bases <span class="math inline">\((\chi_J)\)</span> with <span class="math inline">\(2^n\)</span> elements orthonormal
+w.r.t. the inner product
+<span class="math display">\[
+    \langle f, g\rangle= \mathbb E_{\mathbf x\sim \mathcal P^n} [f(\mathbf x)^* g(\mathbf x)]
+\]</span>
+There exists derivative operator defined by its generator action,
+Leibniz rule, and linearity
+<span class="math display">\[
+    \partial_{i} \chi_j = \delta_{ij}, \quad \partial_{i} (fg) = (\partial_{i} f)g + f(\partial_{i} g)
+\]</span></p>
 
 </div>
 </div>

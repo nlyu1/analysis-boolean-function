@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Analysis of Boolean Functions</title>
-  <meta name="description" content="Analysis of Boolean Functions" />
+  <title>Algebraic Analysis of Classical and Quantum Computation</title>
+  <meta name="description" content="Algebraic Analysis of Classical and Quantum Computation" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Analysis of Boolean Functions" />
+  <meta property="og:title" content="Algebraic Analysis of Classical and Quantum Computation" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Analysis of Boolean Functions" />
+  <meta name="twitter:title" content="Algebraic Analysis of Classical and Quantum Computation" />
   
   
   
@@ -107,6 +107,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#fourier-formulas"><i class="fa fa-check"></i>Fourier formulas</a></li>
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#relative-densities-and-convolution"><i class="fa fa-check"></i>Relative densities and convolution</a></li>
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#almost-linear-functions-property-testing-and-blr"><i class="fa fa-check"></i>Almost linear functions, property testing, and BLR</a></li>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#boolean-function-algebra"><i class="fa fa-check"></i>Boolean function algebra</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html"><i class="fa fa-check"></i><b>2</b> Influence and Spectral Learning</a>
@@ -115,7 +116,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#social-choice-functions"><i class="fa fa-check"></i>Social choice functions</a></li>
 <li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#dependence-properties"><i class="fa fa-check"></i>Dependence properties</a></li>
-<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#influence-and-derivatives"><i class="fa fa-check"></i>Influence and derivatives</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#influence-derivative-and-expectation"><i class="fa fa-check"></i>Influence, derivative, and expectation</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#total-influence"><i class="fa fa-check"></i>Total influence</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -128,7 +130,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of Boolean Functions</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Algebraic Analysis of Classical and Quantum Computation</a>
           </h1>
         </div>
 
@@ -137,7 +139,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Analysis of Boolean Functions</h1>
+<h1 class="title">Algebraic Analysis of Classical and Quantum Computation</h1>
 <p class="author"><em>Nicholas Lyu</em></p>
 <p class="date"><em>2024-06-02</em></p>
 </div>
@@ -148,7 +150,21 @@ Ryan O’Donnell’s book <em>Analysis of Boolean functions</em>
 <span class="citation">(<a href="#ref-o2014analysis">O’Donnell 2014</a>)</span>.</p>
 <p>In addition to being a rich field of computer science in its own right,
 the fourier analysis of boolean functions provide a classical basis
-for the fourier analysis of qubit states.</p>
+for the fourier analysis of quantum computation.</p>
+<p>The space of boolean functions <span class="math inline">\(f(x_1, \cdots, x_n)\)</span>
+over <span class="math inline">\(n\)</span> inputs form a freely generated algebra
+in which the generators <span class="math inline">\(x_1, \cdots x_n\)</span> are involutary, commutative,
+and generate an orthonormal basis.
+Subtly generalizing these constraints yield the full qubit algebra:</p>
+<ul>
+<li>Replacing commutativity over <span class="math inline">\(x_1, \cdots, x_{2n}\)</span>
+with <em>anti-commutativity</em> yields the majorana
+algebra over a finite number of modes,
+or equivalently the qubit algebra under the Jordan-wigner transform.</li>
+<li>Supplementing <span class="math inline">\(x_1, \cdots, x_{2n}\)</span> with <span class="math inline">\(p_1, \cdots p_{2n}\)</span>
+such that <span class="math inline">\([x_i, p_j] = \delta_{ij} x_ip_j\)</span> corresponds to the Pauli
+algebra with <span class="math inline">\(x_i \mapsto X_i, p_i\mapsto Z_i\)</span>.</li>
+</ul>
 <p>These notes are organized as follows</p>
 <ol style="list-style-type: decimal">
 <li>Section <a href="Sec1.html#Sec1">1</a> corresponds to Chapters 1 &amp; 8 of the book, introducing
@@ -168,6 +184,10 @@ on context.</li>
 distribution over their domain unless otherwise specified.</li>
 <li>Under the mapping <span class="math inline">\((0, 1)\)</span> corresponding to false, true, the representation of
 truth values in <span class="math inline">\(\mathcal P\)</span> is somewhat counter-intuitively <span class="math inline">\((-1, 1)\mapsto\)</span> true, false.</li>
+<li>Given a bitstring <span class="math inline">\(x\)</span> and index <span class="math inline">\(i\)</span>, <span class="math inline">\(x^{\oplus i}\)</span> denotes <span class="math inline">\(x\)</span> with the <span class="math inline">\(i\)</span>-th index
+negated. Similarly, <span class="math inline">\(x^{i\mapsto b}\)</span> denotes <span class="math inline">\(x\)</span> with the <span class="math inline">\(i\)</span>-th index replaced by <span class="math inline">\(b\)</span>.</li>
+<li>Let <span class="math inline">\(E\)</span> denote an event, for example, <span class="math inline">\(a=b\)</span>. Then <span class="math inline">\(1_E\)</span> denotes the indicator random variable
+which is <span class="math inline">\(1\)</span> when the event is true, and <span class="math inline">\(0\)</span> otherwise.</li>
 </ul>
 
 </div>

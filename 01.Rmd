@@ -83,17 +83,17 @@ Using the formula above
 ::: {.definition name="inner product"}
 Define the inner product $\la \cdot, \cdot\ra: L^2(\P^n)\times L^2(\P^n)\to \F$ via 
 \[ 
-    \la f | g\ra = \df 1 {2^n} \la f(x)|g(x)\ra 
+    \la f, g\ra = \df 1 {2^n} \la f(x), g(x)\ra 
 \] 
-Again, note the implicit sum over $x$. Here $\la f(x)|g(x)\ra$ is the inner product on $\F$ 
+Again, note the implicit sum over $x$. Here $\la f(x), g(x)\ra$ is the inner product on $\F$ 
 \[ 
-    \la a|b\ra = \begin{cases}
+    \la a, b\ra = \begin{cases}
         ab & \F=\R \\ 
         a^*b & \F=\C
     \end{cases}
 \] 
 In most generality $\F=\C$, in which case 
-$\la f|g\ra = \Exp[f(\mbf x)^*g(\mbf x)]$. 
+$\la f, g\ra = \Exp[f(\mbf x)^*g(\mbf x)]$. 
 Norms are defined naturally 
 \[ 
     \|f\|_p = \Exp[|f(\mbf x)|^{p}]^{1/p}
@@ -102,12 +102,12 @@ Norms are defined naturally
 The indicator basis is apparantly orthonormal since $I_xI_y=0$ if $x\neq y$. 
 
 ::: {.theorem name="orthonormality of fourier basis"}
-$\la \chi_J|\chi_K\ra = \delta_{JK}$. 
+$\la \chi_J, \chi_K\ra = \delta_{JK}$. 
 :::
 _Proof:_ Using $x_j^2=1$, we obtain $\chi_J\chi_K=\chi_{J\Delta K}$. 
 We further have $\Exp[\chi_J(\mbf x)] = \delta_{J 0}$, then 
 \[ 
-    \la \chi_J|\chi_K\ra = \Exp[\chi_J(\mbf x)\chi_K(\mbf x)] = 
+    \la \chi_J, \chi_K\ra = \Exp[\chi_J(\mbf x)\chi_K(\mbf x)] = 
     \Exp[\chi_{J\Delta K}(\mbf x)] = \delta_{0(J\Delta K)} = \delta_{JK}
 \] 
 
@@ -121,7 +121,7 @@ $\la f|f\ra = 1$.
 :::
 
 ::: {.theorem name="Plancherel's theorem"} 
-$\la f|g\ra = \Exp[f(\mbf x)^*g(\mbf x)] = \widehat f(J)^*g(J)$
+$\la f, g\ra = \Exp[f(\mbf x)^*g(\mbf x)] = \widehat f(J)^*g(J)$
 :::
 
 ::: {.definition #hammingDistance name="Hamming distance"}
@@ -129,7 +129,7 @@ Define the Hamming distance between two boolean functions _with range $\P$_
 \[ 
     \dist(f, g) = \Pr[f(\mbf x)\neq g(\mbf x)]
 \] 
-Note that $\la f|g\ra = 1 - 2\, \dist(f, g)$. 
+Note that $\la f, g\ra = 1 - 2\, \dist(f, g)$. 
 :::
 
 ::: {.definition name="boolean function statistics"}
@@ -138,7 +138,7 @@ random variable. Its statistics are defined in the most obvious ways
 
 - $\Exp[f] = \widehat f(0)$; here we are using $\F_2$ and $\P$ interchangeably. 
     This is the constant term in the fourier expansion of $f$ about $\F_2$ representation. 
-- $\Cov(f, g) = \la f |g\ra - \Exp[f]\Exp[g] = \sum_{J\neq 0} \widehat f(J)^* g(\mbf J)$. 
+- $\Cov(f, g) = \la f , g\ra - \Exp[f]\Exp[g] = \sum_{J\neq 0} \widehat f(J)^* g(\mbf J)$. 
 ::: 
 
 ::: {.definition name="fourier weight, spectral sample, degree weight"}
@@ -313,3 +313,27 @@ determine $\chi_J(x)$ with high probability based on $f$.
 :::
 _Proof:_ The probability that $f(x+\mbf y)\neq \chi_J(x+\mbf y)$ and 
 $f(\mbf y)\neq \chi_J(\mbf y)$ is upper-bounded by $1-2\epsilon$. 
+
+
+### Boolean function algebra {-}
+Extending beyond O'Connel, 
+we see that the space of boolean functions $L^2(\P^n)$ 
+is in fact a finite freely-generated Hilbert algebra with $n$ generators 
+\[ 
+    \chi_i(x) = x_i, \quad \chi_i:\P^n\to \F
+\] 
+Scalar multiplication and addition are defined in the most obvious ways, 
+and algebraic multiplication is specified by 
+\[ 
+    [\chi_i, \chi_j] = 0, \quad \chi_i^2 = 1
+\] 
+The generators generate the bases $(\chi_J)$ with $2^n$ elements orthonormal 
+w.r.t. the inner product 
+\[ 
+    \la f, g\ra = \Exp_{\mbf x\sim \P^n} [f(\mbf x)^* g(\mbf x)]
+\] 
+There exists derivative operator defined by its generator action, 
+Leibniz rule, and linearity 
+\[ 
+    \pd i \chi_j = \delta_{ij}, \quad \pd i (fg) = (\pd i f)g + f(\pd i g)
+\] 
