@@ -132,13 +132,14 @@ Define the Hamming distance between two boolean functions _with range $\P$_
 Note that $\la f, g\ra = 1 - 2\, \dist(f, g)$. 
 :::
 
-::: {.definition name="boolean function statistics"}
+::: {.definition #booleanStatistics name="boolean function statistics"}
 A boolean function, viewed as $f(\mbf x)$, is also a real-valued discrete 
 random variable. Its statistics are defined in the most obvious ways 
 
-- $\Exp[f] = \widehat f(0)$; here we are using $\F_2$ and $\P$ interchangeably. 
-    This is the constant term in the fourier expansion of $f$ about $\F_2$ representation. 
-- $\Cov(f, g) = \la f , g\ra - \Exp[f]\Exp[g] = \sum_{J\neq 0} \widehat f(J)^* g(\mbf J)$. 
+- $\Exp[f] = \widehat f(0)$; here we are using $\B$ and $\P$ interchangeably. 
+    This is the constant term in the fourier expansion of $f$ about $\B$ representation. 
+- $\Cov(f, g) = \la f , g\ra - \Exp[f]\Exp[g] = \sum_{J\neq 0} \widehat f(J) g(J)$. 
+- $\Var(f) = \|f-\Exp[f]\|^2 = \sum_{j\neq 0} f(J)^2$. 
 ::: 
 
 ::: {.definition name="fourier weight, spectral sample, degree weight"}

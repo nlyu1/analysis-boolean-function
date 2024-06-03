@@ -163,13 +163,13 @@ is
     \mathrm{Maj}_n(x) = \mathrm{sgn}\left(\sum x_j\right)
 \]</span></p>
 <div class="definition">
-<p><span id="def:unlabeled-div-21" class="definition"><strong>Definition 2.1  (dictator, junta) </strong></span>The <span class="math inline">\(i\)</span>-th dictator (projection) function is <span class="math inline">\(\chi_i(x) = x_i\)</span>.
+<p><span id="def:unlabeled-div-20" class="definition"><strong>Definition 2.1  (dictator, junta) </strong></span>The <span class="math inline">\(i\)</span>-th dictator (projection) function is <span class="math inline">\(\chi_i(x) = x_i\)</span>.
 Similarly, a function <span class="math inline">\(\mathcal P^n\to \mathcal P\)</span> is a <span class="math inline">\(k\)</span>-junta if it depends
 upon <em>at most</em> <span class="math inline">\(k\)</span> input coordinates. Informally, a function
 is a junta if it depends on a constant number of coordinates.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-22" class="definition"><strong>Definition 2.2  (weighted majority (linear threshold) function) </strong></span><span class="math inline">\(f\)</span> is a weighted majority function or, equivalently, a (linear)
+<p><span id="def:unlabeled-div-21" class="definition"><strong>Definition 2.2  (weighted majority (linear threshold) function) </strong></span><span class="math inline">\(f\)</span> is a weighted majority function or, equivalently, a (linear)
 threshold function if, for some <span class="math inline">\(a\in \mathbb R^n\)</span>
 <span class="math display">\[
     f(x) = \mathrm{sgn}(a\cdot x)
@@ -184,7 +184,7 @@ is a function of <span class="math inline">\(n^d\)</span> bits defined inductive
 \]</span></p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-23" class="definition"><strong>Definition 2.3  (tribes function) </strong></span>The tribes function of width <span class="math inline">\(w\)</span> and size <span class="math inline">\(s\)</span> <span class="math inline">\(\mathrm{Tribes}_{ws}:\mathcal P^{ws}\to \mathcal P\)</span> is
+<p><span id="def:unlabeled-div-22" class="definition"><strong>Definition 2.3  (tribes function) </strong></span>The tribes function of width <span class="math inline">\(w\)</span> and size <span class="math inline">\(s\)</span> <span class="math inline">\(\mathrm{Tribes}_{ws}:\mathcal P^{ws}\to \mathcal P\)</span> is
 <span class="math display">\[
     \mathrm{Tribes}((x_{ws})) = \bigcup_{j=1}^s \left(\bigcap_{k=1}^w x_{ws}\right)
 \]</span>
@@ -194,7 +194,7 @@ There are <span class="math inline">\(s\)</span> tribes, each containing <span c
 <div id="dependence-properties" class="section level3 unnumbered hasAnchor">
 <h3>Dependence properties<a href="influence-and-spectral-learning.html#dependence-properties" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-24" class="definition"><strong>Definition 2.4  (miscellaneous properties) </strong></span><span class="math inline">\(f:\mathcal P^n\to \mathcal P\)</span> (naturally extending to codomain <span class="math inline">\(\mathbb R\)</span>) is</p>
+<p><span id="def:unlabeled-div-23" class="definition"><strong>Definition 2.4  (miscellaneous properties) </strong></span><span class="math inline">\(f:\mathcal P^n\to \mathcal P\)</span> (naturally extending to codomain <span class="math inline">\(\mathbb R\)</span>) is</p>
 <ul>
 <li>monotone if <span class="math inline">\(x\leq y\implies f(x)\leq f(y)\)</span> where <span class="math inline">\(x\leq y\)</span> is defined coordinate-wise.</li>
 <li>odd if <span class="math inline">\(f(-x) = -f(x)\)</span>.</li>
@@ -204,7 +204,7 @@ on the weight of <span class="math inline">\(x\)</span>.</li>
 </ul>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-25" class="theorem"><strong>Theorem 2.1  (May's theorem) </strong></span><span class="math inline">\(f:\mathcal P^n \to \mathcal P\)</span> is symmetric and monotone if and only if
+<p><span id="thm:unlabeled-div-24" class="theorem"><strong>Theorem 2.1  (May's theorem) </strong></span><span class="math inline">\(f:\mathcal P^n \to \mathcal P\)</span> is symmetric and monotone if and only if
 <span class="math inline">\(f(x)=\mathrm{sgn}(1\cdot x+a_0)\)</span>. If <span class="math inline">\(f\)</span> is additionally odd, then <span class="math inline">\(n\)</span> must be odd
 and <span class="math inline">\(f=\mathrm{Maj}_n\)</span>.</p>
 </div>
@@ -217,7 +217,7 @@ One may show that <span class="math inline">\(y\mapsto \mathrm{sgn}(|y|+a_0)\)</
 <li>Tribes functions are monotone, unanimous, and transitive-symmetric.</li>
 </ul>
 <div class="definition">
-<p><span id="def:unlabeled-div-26" class="definition"><strong>Definition 2.5  (transitive symmetry) </strong></span><span class="math inline">\(f\)</span> is transitive-symmetric if for all <span class="math inline">\(j, k\in [n]\)</span> there exists
+<p><span id="def:unlabeled-div-25" class="definition"><strong>Definition 2.5  (transitive symmetry) </strong></span><span class="math inline">\(f\)</span> is transitive-symmetric if for all <span class="math inline">\(j, k\in [n]\)</span> there exists
 a permutation <span class="math inline">\(\pi\in S_n\)</span> with <span class="math inline">\(\pi(j)=k\)</span> such that
 <span class="math inline">\(f\circ \pi = f\)</span>.</p>
 <p>Symmetry demands that <em>all</em> arrangements of coordinates are equivalent.
@@ -235,7 +235,7 @@ then <span class="math inline">\(\hat f = \hat f\circ \pi^{-1}\)</span> since
 <span class="math inline">\(\chi_J\circ \pi = \chi_{\pi^{-1}(J)}\)</span>. The result follows by
 definition of transitive symmetry.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-27" class="definition"><strong>Definition 2.6  (impartial culture assumption) </strong></span>The impartial culture assumption assumes that all <span class="math inline">\(n\)</span> voters’
+<p><span id="def:unlabeled-div-26" class="definition"><strong>Definition 2.6  (impartial culture assumption) </strong></span>The impartial culture assumption assumes that all <span class="math inline">\(n\)</span> voters’
 preferences are independent and uniformly random. This corresponds to
 voting in the absence of information.</p>
 </div>
@@ -259,7 +259,7 @@ is the fraction of boundary edges out of edges which involve a change in <span c
 <p>The dictator function satisfies <span class="math inline">\(\mathrm{Inf}_j[\pm \chi_k]=\delta_{jk}\)</span>. The
 “or” and “and” functions satisfy <span class="math inline">\(\mathrm{Inf}_i[\mathrm{OR}_n] = \mathrm{Inf}_i[\mathrm{AND}_n] = 2^{1-n}\)</span>.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-28" class="definition"><strong>Definition 2.8  (derivative, gradient) </strong></span>The <span class="math inline">\(i\)</span>-th (discrete) derivative operator
+<p><span id="def:unlabeled-div-27" class="definition"><strong>Definition 2.8  (derivative, gradient) </strong></span>The <span class="math inline">\(i\)</span>-th (discrete) derivative operator
 <span class="math inline">\(\partial_{i}:L^2(\mathcal P^n)\to L^2(\mathcal P^n)\)</span> is defined by
 <span class="math display">\[
     \partial_{i} f(x) = \dfrac{f(x^{i\mapsto 1}) - f(x^{i\mapsto 0})} 2
@@ -292,7 +292,7 @@ This constitutes the generalization of influence to real-valued boolean
 functions.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-29" class="definition"><strong>Definition 2.9  (relevance) </strong></span>Coordinate <span class="math inline">\(i\)</span> is relevant for <span class="math inline">\(f\)</span> if <span class="math inline">\(\mathrm{Inf}_i[f]&gt;0\)</span>.
+<p><span id="def:unlabeled-div-28" class="definition"><strong>Definition 2.9  (relevance) </strong></span>Coordinate <span class="math inline">\(i\)</span> is relevant for <span class="math inline">\(f\)</span> if <span class="math inline">\(\mathrm{Inf}_i[f]&gt;0\)</span>.
 In other words, there exists at least one <span class="math inline">\(x\)</span> for which
 <span class="math inline">\(f(x)\neq f(x^{\oplus i})\)</span>.</p>
 </div>
@@ -306,7 +306,7 @@ if coordinate <span class="math inline">\(i\)</span> is pivotal for <span class=
     \widehat{\partial_{i} f}(0) = \hat f(i)
 \]</span></p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-30" class="proposition"><strong>Proposition 2.3  </strong></span>If <span class="math inline">\(f\)</span> is transitive-symmetric and monotone, then
+<p><span id="prp:unlabeled-div-29" class="proposition"><strong>Proposition 2.3  </strong></span>If <span class="math inline">\(f\)</span> is transitive-symmetric and monotone, then
 <span class="math display">\[
     \forall i: \inf_i[f] \leq 1/\sqrt n
 \]</span></p>
@@ -321,7 +321,7 @@ independent of <span class="math inline">\(i\)</span>. By Parseval
     \implies \mathrm{Inf}_i[f] = \hat f(1) \leq 1/\sqrt n
 \]</span></p>
 <div class="definition">
-<p><span id="def:unlabeled-div-31" class="definition"><strong>Definition 2.10  (expectation operator, Laplacian) </strong></span>The <span class="math inline">\(i\)</span>-th expectation operator is the linear operator
+<p><span id="def:unlabeled-div-30" class="definition"><strong>Definition 2.10  (expectation operator, Laplacian) </strong></span>The <span class="math inline">\(i\)</span>-th expectation operator is the linear operator
 <span class="math display">\[
     \mathbb E_i f(x) = \mathbb E_{\mathbf x_i}[f(x_1, \cdots, \mathbf x_i, \cdots, x_n)]
 \]</span>
@@ -348,7 +348,7 @@ It follows immediately from fourier formulas and previous definitions that
 <div id="total-influence" class="section level3 unnumbered hasAnchor">
 <h3>Total influence<a href="influence-and-spectral-learning.html#total-influence" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-32" class="definition"><strong>Definition 2.11  (total influence, sensitivity) </strong></span>The total influence of <span class="math inline">\(f:\mathcal P^n\to \mathbb R\)</span> is
+<p><span id="def:unlabeled-div-31" class="definition"><strong>Definition 2.11  (total influence, sensitivity) </strong></span>The total influence of <span class="math inline">\(f:\mathcal P^n\to \mathbb R\)</span> is
 <span class="math display">\[
     \mathrm{Inf}_\Sigma[f] = \sum \mathrm{Inf}_j[f]
 \]</span>
@@ -367,7 +367,7 @@ Proposition <a href="influence-and-spectral-learning.html#prp:monotoneInfluence"
 functions, <span class="math inline">\(\mathrm{Inf}_\Sigma[f] = \sum \hat f(j)\)</span>.</p>
 </div>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-33" class="proposition"><strong>Proposition 2.4  </strong></span>The fraction of boundary edges in the Hamming cube is <span class="math inline">\(\mathrm{Inf}_\Sigma[f]/n\)</span>.</p>
+<p><span id="prp:unlabeled-div-32" class="proposition"><strong>Proposition 2.4  </strong></span>The fraction of boundary edges in the Hamming cube is <span class="math inline">\(\mathrm{Inf}_\Sigma[f]/n\)</span>.</p>
 </div>
 <p><em>Proof:</em> Follows immediately from our discussion <a href="influence-and-spectral-learning.html#def:pivotInfluence">2.7</a>
 that <span class="math inline">\(\mathrm{Inf}_i[f]\)</span> is the fraction of boundary edges for
@@ -375,7 +375,7 @@ that <span class="math inline">\(\mathrm{Inf}_i[f]\)</span> is the fraction of b
 <p>The linear fourier coefficients have a natural interpretation from a
 social choice perspective.</p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-34" class="proposition"><strong>Proposition 2.5  </strong></span>Let <span class="math inline">\(f:\mathcal P^n\to \mathcal P\)</span> be a voting rule for a <span class="math inline">\(2\)</span>-candidate election.
+<p><span id="prp:unlabeled-div-33" class="proposition"><strong>Proposition 2.5  </strong></span>Let <span class="math inline">\(f:\mathcal P^n\to \mathcal P\)</span> be a voting rule for a <span class="math inline">\(2\)</span>-candidate election.
 Given votes <span class="math inline">\(\mathbf x\)</span> and let <span class="math inline">\(\mathbf w\)</span> be the number of votes which agree with the
 outcome <span class="math inline">\(f(\mathbf x)\)</span> of the election, then
 <span class="math display">\[
@@ -403,7 +403,7 @@ Total influence correspondly prompt the following definitions</p>
 <li><span class="math inline">\(\langle f, \mathrm{L}f\rangle= \mathrm{Inf}_\Sigma[f]\)</span>.</li>
 </ul>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-35" class="theorem"><strong>Theorem 2.2  (spectral representation of total influence) </strong></span>The total influence is the expectation of fourier degree drawn according to the
+<p><span id="thm:unlabeled-div-34" class="theorem"><strong>Theorem 2.2  (spectral representation of total influence) </strong></span>The total influence is the expectation of fourier degree drawn according to the
 spectral sample
 <span class="math display">\[
     \mathrm{Inf}_\Sigma[f] = \sum_J |J| \hat f(J)^2 = \sum_j j W^j[f] \implies
@@ -413,6 +413,15 @@ It measures the average “degree” of the fourier weights.</p>
 </div>
 <p><em>Proof</em> Recalling equation <a href="influence-and-spectral-learning.html#eq:infFourier">(2.2)</a>, when we sum over <span class="math inline">\(i\)</span>,
 each <span class="math inline">\(J\)</span> with degree <span class="math inline">\(|J|\)</span> gets counted exactly <span class="math inline">\(j\)</span> times.</p>
+<div class="corollary">
+<p><span id="cor:unlabeled-div-35" class="corollary"><strong>Corollary 2.1  (Poincaré inequality) </strong></span>for any <span class="math inline">\(f\in L^2(\mathcal P^n)\)</span>
+<span class="math display">\[
+    \mathrm{Var}[f] = \sum_{j&gt;0} W^j[f] \leq \sum_j jW^j[f] = \mathrm{Inf}_\Sigma[f]
+\]</span>
+Equality holding if and only if <span class="math inline">\(f\)</span> is constant or a dictator.</p>
+</div>
+<p><em>Proof:</em> Equality holds if and only if the fourier weight of <span class="math inline">\(f\)</span>
+is concentrated at <span class="math inline">\(j=0\)</span> or <span class="math inline">\(j=1\)</span>.</p>
 
 </div>
 </div>

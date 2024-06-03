@@ -272,16 +272,17 @@ In particular, if <span class="math inline">\(f\)</span> is boolean-valued (rang
 Note that <span class="math inline">\(\langle f, g\rangle= 1 - 2\, \mathrm{dist}(f, g)\)</span>.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-10" class="definition"><strong>Definition 1.6  (boolean function statistics) </strong></span>A boolean function, viewed as <span class="math inline">\(f(\mathbf x)\)</span>, is also a real-valued discrete
+<p><span id="def:booleanStatistics" class="definition"><strong>Definition 1.6  (boolean function statistics) </strong></span>A boolean function, viewed as <span class="math inline">\(f(\mathbf x)\)</span>, is also a real-valued discrete
 random variable. Its statistics are defined in the most obvious ways</p>
 <ul>
-<li><span class="math inline">\(\mathbb E[f] = \widehat f(0)\)</span>; here we are using <span class="math inline">\(\mathbb F_2\)</span> and <span class="math inline">\(\mathcal P\)</span> interchangeably.
-This is the constant term in the fourier expansion of <span class="math inline">\(f\)</span> about <span class="math inline">\(\mathbb F_2\)</span> representation.</li>
-<li><span class="math inline">\(\mathrm{Cov}(f, g) = \langle f , g\rangle- \mathbb E[f]\mathbb E[g] = \sum_{J\neq 0} \widehat f(J)^* g(\mathbf J)\)</span>.</li>
+<li><span class="math inline">\(\mathbb E[f] = \widehat f(0)\)</span>; here we are using <span class="math inline">\(\mathcal B\)</span> and <span class="math inline">\(\mathcal P\)</span> interchangeably.
+This is the constant term in the fourier expansion of <span class="math inline">\(f\)</span> about <span class="math inline">\(\mathcal B\)</span> representation.</li>
+<li><span class="math inline">\(\mathrm{Cov}(f, g) = \langle f , g\rangle- \mathbb E[f]\mathbb E[g] = \sum_{J\neq 0} \widehat f(J) g(J)\)</span>.</li>
+<li><span class="math inline">\(\mathrm{Var}(f) = \|f-\mathbb E[f]\|^2 = \sum_{j\neq 0} f(J)^2\)</span>.</li>
 </ul>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 1.7  (fourier weight, spectral sample, degree weight) </strong></span>The (fourier) weight of <span class="math inline">\(f\)</span> on a set <span class="math inline">\(J\)</span> is simply <span class="math inline">\(|\widehat f(J)|^2\)</span>.
+<p><span id="def:unlabeled-div-10" class="definition"><strong>Definition 1.7  (fourier weight, spectral sample, degree weight) </strong></span>The (fourier) weight of <span class="math inline">\(f\)</span> on a set <span class="math inline">\(J\)</span> is simply <span class="math inline">\(|\widehat f(J)|^2\)</span>.
 In particular, Parseval’s theorem implies that the fourier weight of a boolean function
 defines a probability distribution on the Hamming cube, which may be identified
 with the power set <span class="math inline">\(\mathcal P([n])\)</span>.</p>
@@ -299,7 +300,7 @@ The fourier weight of <span class="math inline">\(f\)</span> at degree <span cla
 <p>For this section we use <span class="math inline">\(\mathcal B\)</span> instead of <span class="math inline">\(\mathcal P\)</span> to represent the boolean
 domain, so that addition is the natural operation.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-12" class="definition"><strong>Definition 1.8  (density function) </strong></span>A (relative probability) density function on the Hamming cube <span class="math inline">\(\mathcal P^n\)</span>
+<p><span id="def:unlabeled-div-11" class="definition"><strong>Definition 1.8  (density function) </strong></span>A (relative probability) density function on the Hamming cube <span class="math inline">\(\mathcal P^n\)</span>
 is a nonnegative function satisfying <span class="math inline">\(\mathbb E[\varphi(\mathbf x)] = 1\)</span>.
 In this case we interchangeably write <span class="math inline">\(\varphi\)</span> as a density function itself.</p>
 </div>
@@ -309,13 +310,13 @@ In this case we interchangeably write <span class="math inline">\(\varphi\)</spa
     = \langle\varphi, g\rangle
 \]</span></p>
 <div class="definition">
-<p><span id="def:unlabeled-div-13" class="definition"><strong>Definition 1.9  (indicator function) </strong></span>Given <span class="math inline">\(A\subset \mathcal B^n\)</span>, let <span class="math inline">\(1_A:\mathcal B^n\to \mathcal B\)</span> for the <span class="math inline">\((0, 1)\)</span> indicator
+<p><span id="def:unlabeled-div-12" class="definition"><strong>Definition 1.9  (indicator function) </strong></span>Given <span class="math inline">\(A\subset \mathcal B^n\)</span>, let <span class="math inline">\(1_A:\mathcal B^n\to \mathcal B\)</span> for the <span class="math inline">\((0, 1)\)</span> indicator
 function.
 For <span class="math inline">\(A\neq \emptyset\)</span>, denote by <span class="math inline">\(\varphi_A = 1_A/\mathbb E[1_A]\)</span> the
 density function associated with uniform distribution over <span class="math inline">\(A\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 1.1  (singleton density) </strong></span>Let <span class="math inline">\(\{0\}\subset \mathcal B^n\)</span> denote the singleton set of the vector
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 1.1  (singleton density) </strong></span>Let <span class="math inline">\(\{0\}\subset \mathcal B^n\)</span> denote the singleton set of the vector
 with all entries <span class="math inline">\(0\)</span>
 <span class="math display">\[
     \varphi_{\{0\}}(y)
@@ -324,7 +325,7 @@ with all entries <span class="math inline">\(0\)</span>
 Note that <span class="math inline">\(\pm\)</span> are equivalent in the <span class="math inline">\(\mathcal B\)</span> algebra.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-15" class="definition"><strong>Definition 1.10  (convolution) </strong></span>Given <span class="math inline">\(f, g:\mathcal B^n\to \mathbb R\)</span>, define <span class="math inline">\(f\ast g:\mathcal P^n\to \mathbb R\)</span> by
+<p><span id="def:unlabeled-div-14" class="definition"><strong>Definition 1.10  (convolution) </strong></span>Given <span class="math inline">\(f, g:\mathcal B^n\to \mathbb R\)</span>, define <span class="math inline">\(f\ast g:\mathcal P^n\to \mathbb R\)</span> by
 <span class="math display" id="eq:bitConvolution">\[\begin{equation}
     (f\ast g)(x) = \mathbb E[f(\mathbf y)g(x\pm \mathbf y)]
     \tag{1.2}
@@ -338,7 +339,7 @@ Note that if <span class="math inline">\(\varphi\)</span> is a density function,
 \]</span></p>
 </div>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-16" class="theorem"><strong>Theorem 1.5  (fourier theorem) </strong></span>Given <span class="math inline">\(f, g:\mathcal B^n\to \mathbb C\)</span>, for all <span class="math inline">\(J\)</span>
+<p><span id="thm:unlabeled-div-15" class="theorem"><strong>Theorem 1.5  (fourier theorem) </strong></span>Given <span class="math inline">\(f, g:\mathcal B^n\to \mathbb C\)</span>, for all <span class="math inline">\(J\)</span>
 <span class="math display">\[
     \widehat{f\ast g}(J) = \widehat f(J) \widehat g(J)
 \]</span></p>
@@ -358,7 +359,7 @@ Note that if <span class="math inline">\(\varphi\)</span> is a density function,
 <div id="almost-linear-functions-property-testing-and-blr" class="section level3 unnumbered hasAnchor">
 <h3>Almost linear functions, property testing, and BLR<a href="Sec1.html#almost-linear-functions-property-testing-and-blr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="definition">
-<p><span id="def:unlabeled-div-17" class="definition"><strong>Definition 1.11  ((approximate) linearity of boolean functions) </strong></span>A function <span class="math inline">\(f:\mathcal B^n\to \mathcal B\)</span> is linear if either of the following conditions hold:</p>
+<p><span id="def:unlabeled-div-16" class="definition"><strong>Definition 1.11  ((approximate) linearity of boolean functions) </strong></span>A function <span class="math inline">\(f:\mathcal B^n\to \mathcal B\)</span> is linear if either of the following conditions hold:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(\forall x, y: f(x+y) = f(x)+f(y)\)</span></li>
 <li><span class="math inline">\(f(x) = a\cdot x\)</span> for some <span class="math inline">\(a\in \mathcal B^n\)</span></li>
@@ -375,7 +376,7 @@ define <span class="math inline">\((e_j)_k=\delta_{jk}\)</span>, then <span clas
 The converse is not papparant but nevertheless true.</p>
 </div>
 <div class="definition">
-<p><span id="def:unlabeled-div-18" class="definition"><strong>Definition 1.12  (closeness) </strong></span>Recalling the Hamming distance <a href="Sec1.html#def:hammingDistance">1.5</a>.
+<p><span id="def:unlabeled-div-17" class="definition"><strong>Definition 1.12  (closeness) </strong></span>Recalling the Hamming distance <a href="Sec1.html#def:hammingDistance">1.5</a>.
 Two boolean functions are <span class="math inline">\(\epsilon\)</span>-close of <span class="math inline">\(\mathrm{dist}(f, g)\leq \epsilon\)</span>
 otherwise <span class="math inline">\(\epsilon\)</span>-far. Given a nonempty property <span class="math inline">\(P\)</span> on <span class="math inline">\(n\)</span>-bit
 Boolean functions, define
@@ -388,7 +389,7 @@ Boolean functions, define
 which is less than <span class="math inline">\(\epsilon\)</span>-close to <span class="math inline">\(f\)</span>.
 The test below shows that <span class="math inline">\(1\implies 2\)</span> above:</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-19" class="theorem"><strong>Theorem 1.6  (BLR test) </strong></span>The BLR procedure tests for linearity as follows:</p>
+<p><span id="thm:unlabeled-div-18" class="theorem"><strong>Theorem 1.6  (BLR test) </strong></span>The BLR procedure tests for linearity as follows:</p>
 <ul>
 <li>Choose <span class="math inline">\(\mathbf{x, y}\in \mathcal B^n\)</span> independently.</li>
 <li>Query <span class="math inline">\(f\)</span> at <span class="math inline">\(\mathbf{x, y}, \mathbf x + \mathbf y\)</span>.</li>
@@ -427,7 +428,7 @@ It follows that <span class="math inline">\(\epsilon \geq \min_K \mathrm{dist}(f
 <p>If <span class="math inline">\(f\)</span> is <span class="math inline">\(\epsilon\)</span>-close to <span class="math inline">\(\chi_J\)</span>, we can determine <span class="math inline">\(\chi_J(x)\)</span>
 with high probability for a given <span class="math inline">\(x\)</span> using the following procedure:</p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-20" class="proposition"><strong>Proposition 1.1  (local correctibility of linear functions) </strong></span>Suppose <span class="math inline">\(f:\mathcal B^n\to \mathcal P\)</span> is <span class="math inline">\(\epsilon\)</span>-close to <span class="math inline">\(\chi_J\)</span>, then
+<p><span id="prp:unlabeled-div-19" class="proposition"><strong>Proposition 1.1  (local correctibility of linear functions) </strong></span>Suppose <span class="math inline">\(f:\mathcal B^n\to \mathcal P\)</span> is <span class="math inline">\(\epsilon\)</span>-close to <span class="math inline">\(\chi_J\)</span>, then
 for every <span class="math inline">\(x\in \mathcal B^n\)</span>, the following procedure outputs <span class="math inline">\(\chi_J(x)\)</span> with
 probability at least <span class="math inline">\(1-2\epsilon\)</span>:</p>
 <ol style="list-style-type: decimal">

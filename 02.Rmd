@@ -273,3 +273,13 @@ It measures the average "degree" of the fourier weights.
 :::
 _Proof_ Recalling equation \@ref(eq:infFourier), when we sum over $i$, 
 each $J$ with degree $|J|$ gets counted exactly $j$ times. 
+
+:::{.corollary name="Poincaré inequality"}
+for any $f\in L^2(\P^n)$ 
+\[ 
+    \Var[f] = \sum_{j>0} W^j[f] \leq \sum_j jW^j[f] = \Inft[f]
+\] 
+Equality holding if and only if $f$ is constant or a dictator. 
+:::
+_Proof:_ Equality holds if and only if the fourier weight of $f$ 
+is concentrated at $j=0$ or $j=1$. 
