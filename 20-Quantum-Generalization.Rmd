@@ -37,8 +37,9 @@ Leibniz rule, and linearity
 ## Pauli algebra 
 Our starting point is recognizing that equation \@ref(eq:booleanAlgebra) is 
 exactly the commutation relation of the Pauli basis $(X_j)$ or $(Z_j)$. 
-We argue that $(Z_j)$ is the quantum counterpart directly associated with the computational 
-basis. Define the "classical" boolean function $\tilde \rho:\P^n\to \R$ 
+We argue that $(Z_j)$ is the quantum counterpart of the parity function 
+directly associated with the computational basis. 
+Define the "classical" boolean function $\tilde \rho:\P^n\to \R$ 
 associated with a quantum state $\rho$ to be the probability of observing $|x\ra$ 
 (note that we are using the $\P=\pm 1$ labeling of the computational basis), then 
 \[ 
