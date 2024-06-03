@@ -48,6 +48,8 @@ link-citations: true
 \newcommand{\Inf}{\mrm{Inf}}
 \newcommand{\sens}{\mrm{sens}}
 \newcommand{\Lap}{\mrm{L}}
+\newcommand{\Hi}{\mca H}
+\newcommand{\Clif}{\mca C}
 
 
 

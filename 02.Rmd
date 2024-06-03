@@ -115,7 +115,7 @@ is the fraction of boundary edges out of edges which involve a change in $x_i$.
 The dictator function satisfies $\Inf_j[\pm \chi_k]=\delta_{jk}$. The 
 "or" and "and" functions satisfy $\Inf_i[\mrm{OR}_n] = \Inf_i[\mrm{AND}_n] = 2^{1-n}$. 
 
-:::{.definition name="derivative"}
+:::{.definition name="derivative, gradient"}
 The $i$-th (discrete) derivative operator 
 $\pd i:L^2(\P^n)\to L^2(\P^n)$ is defined by
 \[ 
@@ -159,7 +159,7 @@ If $f$ is monotone, then $\Inf_i[f] = \hat f(i)$.
 _Proof:_ By monoticity, $\pd i f(x) = 1$ (and never $-1$) 
 if coordinate $i$ is pivotal for $x$. Then 
 \[ 
-    \Inf_i[f] = \Exp[\pd i f] = \la \pd i f, \chi_{\emptyset}] = 
+    \Inf_i[f] = \Exp[\pd i f] = \la \pd i f, \chi_{\emptyset}\ra = 
     \widehat{\pd i f}(0) = \hat f(i)
 \] 
 
@@ -200,6 +200,7 @@ It follows immediately from fourier formulas and previous definitions that
     \Lap_i f(x) &= x_i \pd i f(x) 
     = \df{f(x) - f(x^{\oplus i})} 2 = \sum_{i\in J}\hat f(J) \chi_J\\ 
    \Inf_i[f] &= \sum_{i\in J} \hat f(J)^2 = \la \Lap_i f, \Lap_i f\ra = \la f, \Lap_i f\ra 
+   (\#eq:infFourier)
 \end{align}
 :::
 
@@ -245,3 +246,30 @@ _Proof:_ Follows immediately from the definition of $\mbf w$ and
 \[ 
     \sum \hat f(j) = \Exp[f(\mbf x)(\mbf x_1 + \cdots + \mbf x_n)]
 \] 
+Our discussion of component influence led to derivatives and Laplacians. 
+Total influence correspondly prompt the following definitions 
+
+- The gradient $\nabla f = (\pd 1 f, \cdots, \pd n f) \in L^2(\P^n)^n$. 
+- The Laplacian $\Lap = \sum \Lap_j$. 
+
+The following fourier formulas for the Laplacian hold, by direct extension 
+
+- $\Lap f(x) = \df n 2 \left[f(x) - \Exp_{i\in [n]} f(x^{\oplus i}) \right]$. 
+- For boolean-valued $f$, $\Lap f(x) =  f(x)\sens_f(x)$. 
+- By linear extension of the previous result: 
+\[ 
+    \Lap f = \sum_J |J| \hat f(J) \chi_J 
+\] 
+- $\la f, \Lap f\ra = \Inft[f]$. 
+
+:::{.theorem name="spectral representation of total influence"}
+The total influence is the expectation of fourier degree drawn according to the 
+spectral sample 
+\[ 
+    \Inft[f] = \sum_J |J| \hat f(J)^2 = \sum_j j W^j[f] \implies 
+    \Inft[f] = \Exp_{J\sim \mca S_f}[|\mbf J|
+\]  
+It measures the average "degree" of the fourier weights. 
+:::
+_Proof_ Recalling equation \@ref(eq:infFourier), when we sum over $i$, 
+each $J$ with degree $|J|$ gets counted exactly $j$ times. 

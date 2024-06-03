@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="Sec1.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="quantum-analogues-of-boolean-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -107,7 +107,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#fourier-formulas"><i class="fa fa-check"></i>Fourier formulas</a></li>
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#relative-densities-and-convolution"><i class="fa fa-check"></i>Relative densities and convolution</a></li>
 <li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#almost-linear-functions-property-testing-and-blr"><i class="fa fa-check"></i>Almost linear functions, property testing, and BLR</a></li>
-<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#boolean-function-algebra"><i class="fa fa-check"></i>Boolean function algebra</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html"><i class="fa fa-check"></i><b>2</b> Influence and Spectral Learning</a>
@@ -119,6 +118,16 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#influence-derivative-and-expectation"><i class="fa fa-check"></i>Influence, derivative, and expectation</a></li>
 <li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#total-influence"><i class="fa fa-check"></i>Total influence</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="quantum-analogues-of-boolean-analysis.html"><a href="quantum-analogues-of-boolean-analysis.html"><i class="fa fa-check"></i><b>3</b> Quantum Analogues of Boolean Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="quantum-analogues-of-boolean-analysis.html"><a href="quantum-analogues-of-boolean-analysis.html#boolean-function-algebra"><i class="fa fa-check"></i><b>3.1</b> Boolean function algebra</a>
+<ul>
+<li class="chapter" data-level="" data-path="quantum-analogues-of-boolean-analysis.html"><a href="quantum-analogues-of-boolean-analysis.html#binary-domain"><i class="fa fa-check"></i>Binary domain</a></li>
+<li class="chapter" data-level="" data-path="quantum-analogues-of-boolean-analysis.html"><a href="quantum-analogues-of-boolean-analysis.html#general-domain"><i class="fa fa-check"></i>General domain</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="quantum-analogues-of-boolean-analysis.html"><a href="quantum-analogues-of-boolean-analysis.html#pauli-algebra"><i class="fa fa-check"></i><b>3.2</b> Pauli algebra</a></li>
+<li class="chapter" data-level="3.3" data-path="quantum-analogues-of-boolean-analysis.html"><a href="quantum-analogues-of-boolean-analysis.html#majorana-algebra"><i class="fa fa-check"></i><b>3.3</b> Majorana algebra</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -250,7 +259,7 @@ is the fraction of boundary edges out of edges which involve a change in <span c
 <p>The dictator function satisfies <span class="math inline">\(\mathrm{Inf}_j[\pm \chi_k]=\delta_{jk}\)</span>. The
 “or” and “and” functions satisfy <span class="math inline">\(\mathrm{Inf}_i[\mathrm{OR}_n] = \mathrm{Inf}_i[\mathrm{AND}_n] = 2^{1-n}\)</span>.</p>
 <div class="definition">
-<p><span id="def:unlabeled-div-28" class="definition"><strong>Definition 2.8  (derivative) </strong></span>The <span class="math inline">\(i\)</span>-th (discrete) derivative operator
+<p><span id="def:unlabeled-div-28" class="definition"><strong>Definition 2.8  (derivative, gradient) </strong></span>The <span class="math inline">\(i\)</span>-th (discrete) derivative operator
 <span class="math inline">\(\partial_{i}:L^2(\mathcal P^n)\to L^2(\mathcal P^n)\)</span> is defined by
 <span class="math display">\[
     \partial_{i} f(x) = \dfrac{f(x^{i\mapsto 1}) - f(x^{i\mapsto 0})} 2
@@ -293,7 +302,7 @@ In other words, there exists at least one <span class="math inline">\(x\)</span>
 <p><em>Proof:</em> By monoticity, <span class="math inline">\(\partial_{i} f(x) = 1\)</span> (and never <span class="math inline">\(-1\)</span>)
 if coordinate <span class="math inline">\(i\)</span> is pivotal for <span class="math inline">\(x\)</span>. Then
 <span class="math display">\[
-    \mathrm{Inf}_i[f] = \mathbb E[\partial_{i} f] = \langle\partial_{i} f, \chi_{\emptyset}] =
+    \mathrm{Inf}_i[f] = \mathbb E[\partial_{i} f] = \langle\partial_{i} f, \chi_{\emptyset}\rangle=
     \widehat{\partial_{i} f}(0) = \hat f(i)
 \]</span></p>
 <div class="proposition">
@@ -328,10 +337,11 @@ The coordinate Laplacian operator <span class="math inline">\(\mathrm{L}_i\)</sp
     \mathrm{L}_i f = f - \mathbb E_i f = x_i \partial_{i} f
 \]</span>
 It follows immediately from fourier formulas and previous definitions that
-<span class="math display">\[\begin{align}
+<span class="math display" id="eq:infFourier">\[\begin{align}
     \mathrm{L}_i f(x) &amp;= x_i \partial_{i} f(x)
     = \dfrac{f(x) - f(x^{\oplus i})} 2 = \sum_{i\in J}\hat f(J) \chi_J\\
    \mathrm{Inf}_i[f] &amp;= \sum_{i\in J} \hat f(J)^2 = \langle\mathrm{L}_i f, \mathrm{L}_i f\rangle= \langle f, \mathrm{L}_i f\rangle
+   \tag{2.2}
 \end{align}\]</span></p>
 </div>
 </div>
@@ -375,7 +385,34 @@ outcome <span class="math inline">\(f(\mathbf x)\)</span> of the election, then
 <p><em>Proof:</em> Follows immediately from the definition of <span class="math inline">\(\mathbf w\)</span> and
 <span class="math display">\[
     \sum \hat f(j) = \mathbb E[f(\mathbf x)(\mathbf x_1 + \cdots + \mathbf x_n)]
-\]</span></p>
+\]</span>
+Our discussion of component influence led to derivatives and Laplacians.
+Total influence correspondly prompt the following definitions</p>
+<ul>
+<li>The gradient <span class="math inline">\(\nabla f = (\partial_{1} f, \cdots, \partial_{n} f) \in L^2(\mathcal P^n)^n\)</span>.</li>
+<li>The Laplacian <span class="math inline">\(\mathrm{L}= \sum \mathrm{L}_j\)</span>.</li>
+</ul>
+<p>The following fourier formulas for the Laplacian hold, by direct extension</p>
+<ul>
+<li><span class="math inline">\(\mathrm{L}f(x) = \dfrac n 2 \left[f(x) - \mathbb E_{i\in [n]} f(x^{\oplus i}) \right]\)</span>.</li>
+<li>For boolean-valued <span class="math inline">\(f\)</span>, <span class="math inline">\(\mathrm{L}f(x) =  f(x)\mathrm{sens}_f(x)\)</span>.</li>
+<li>By linear extension of the previous result:
+<span class="math display">\[
+  \mathrm{L}f = \sum_J |J| \hat f(J) \chi_J
+\]</span></li>
+<li><span class="math inline">\(\langle f, \mathrm{L}f\rangle= \mathrm{Inf}_\Sigma[f]\)</span>.</li>
+</ul>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-35" class="theorem"><strong>Theorem 2.2  (spectral representation of total influence) </strong></span>The total influence is the expectation of fourier degree drawn according to the
+spectral sample
+<span class="math display">\[
+    \mathrm{Inf}_\Sigma[f] = \sum_J |J| \hat f(J)^2 = \sum_j j W^j[f] \implies
+    \mathrm{Inf}_\Sigma[f] = \mathbb E_{J\sim \mathcal S_f}[|\mathbf J|
+\]</span><br />
+It measures the average “degree” of the fourier weights.</p>
+</div>
+<p><em>Proof</em> Recalling equation <a href="influence-and-spectral-learning.html#eq:infFourier">(2.2)</a>, when we sum over <span class="math inline">\(i\)</span>,
+each <span class="math inline">\(J\)</span> with degree <span class="math inline">\(|J|\)</span> gets counted exactly <span class="math inline">\(j\)</span> times.</p>
 
 </div>
 </div>
@@ -386,7 +423,7 @@ outcome <span class="math inline">\(f(\mathbf x)\)</span> of the election, then
         </div>
       </div>
 <a href="Sec1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="quantum-analogues-of-boolean-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

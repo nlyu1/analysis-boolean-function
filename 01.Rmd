@@ -313,27 +313,3 @@ determine $\chi_J(x)$ with high probability based on $f$.
 :::
 _Proof:_ The probability that $f(x+\mbf y)\neq \chi_J(x+\mbf y)$ and 
 $f(\mbf y)\neq \chi_J(\mbf y)$ is upper-bounded by $1-2\epsilon$. 
-
-
-### Boolean function algebra {-}
-Extending beyond O'Connel, 
-we see that the space of boolean functions $L^2(\P^n)$ 
-is in fact a finite freely-generated Hilbert algebra with $n$ generators 
-\[ 
-    \chi_i(x) = x_i, \quad \chi_i:\P^n\to \F
-\] 
-Scalar multiplication and addition are defined in the most obvious ways, 
-and algebraic multiplication is specified by 
-\[ 
-    [\chi_i, \chi_j] = 0, \quad \chi_i^2 = 1
-\] 
-The generators generate the bases $(\chi_J)$ with $2^n$ elements orthonormal 
-w.r.t. the inner product 
-\[ 
-    \la f, g\ra = \Exp_{\mbf x\sim \P^n} [f(\mbf x)^* g(\mbf x)]
-\] 
-There exists derivative operator defined by its generator action, 
-Leibniz rule, and linearity 
-\[ 
-    \pd i \chi_j = \delta_{ij}, \quad \pd i (fg) = (\pd i f)g + f(\pd i g)
-\] 

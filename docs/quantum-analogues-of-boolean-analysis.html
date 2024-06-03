@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Algebraic Analysis of Classical and Quantum Computation</title>
-  <meta name="description" content="Algebraic Analysis of Classical and Quantum Computation" />
+  <title>3 Quantum Analogues of Boolean Analysis | Algebraic Analysis of Classical and Quantum Computation</title>
+  <meta name="description" content="3 Quantum Analogues of Boolean Analysis | Algebraic Analysis of Classical and Quantum Computation" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Algebraic Analysis of Classical and Quantum Computation" />
+  <meta property="og:title" content="3 Quantum Analogues of Boolean Analysis | Algebraic Analysis of Classical and Quantum Computation" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Algebraic Analysis of Classical and Quantum Computation" />
+  <meta name="twitter:title" content="3 Quantum Analogues of Boolean Analysis | Algebraic Analysis of Classical and Quantum Computation" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="Sec1.html"/>
+<link rel="prev" href="influence-and-spectral-learning.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -147,64 +147,91 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Algebraic Analysis of Classical and Quantum Computation</h1>
-<p class="author"><em>Nicholas Lyu</em></p>
-<p class="date"><em>2024-06-02</em></p>
+<div id="quantum-analogues-of-boolean-analysis" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Quantum Analogues of Boolean Analysis<a href="quantum-analogues-of-boolean-analysis.html#quantum-analogues-of-boolean-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="boolean-function-algebra" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Boolean function algebra<a href="quantum-analogues-of-boolean-analysis.html#boolean-function-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="binary-domain" class="section level3 unnumbered hasAnchor">
+<h3>Binary domain<a href="quantum-analogues-of-boolean-analysis.html#binary-domain" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In addition to O’Donnell’s formalism in sections <a href="Sec1.html#Sec1">1</a> and <a href="influence-and-spectral-learning.html#Sec2">2.1</a>,
+we see that the space of boolean functions <span class="math inline">\(L^2(\mathcal P^n)\)</span>
+is in fact a finite freely-generated Hilbert algebra with <span class="math inline">\(n\)</span> generators <span class="math inline">\(x_j\in L^2(\mathcal P^n)\)</span>
+(with some convenient notation overloading)
+<span class="math display">\[
+    x_i(x) = x_i, \quad x_i:\mathcal P^n\to \mathbb C
+\]</span>
+Scalar multiplication and addition are defined in the most obvious ways,
+and algebraic multiplication given by
+<span class="math display" id="eq:booleanAlgebra">\[\begin{equation}
+    [x_i, x_j] = 0, \quad x_i^2 = 1
+    \tag{3.1}
+\end{equation}\]</span>
+Given an algebraic element <span class="math inline">\(f\)</span>, its behavior as a boolean function is retrievable by
+<span class="math display" id="eq:booleanDecomp">\[\begin{equation}
+    f(x) = 2^n\langle f, I_x\rangle= \sum_y f(y) \prod \dfrac{1+x_jy_j}{2}
+    \tag{3.2}
+\end{equation}\]</span>
+Note that the crucial <span class="math inline">\(x_i^2=1\)</span> arises from the algebraic structure of <span class="math inline">\(\mathcal P^n\)</span>.
+The generators generate the bases <span class="math inline">\((\chi_J)\)</span> of <span class="math inline">\(L^2(\mathcal P^n)\)</span>
+with <span class="math inline">\(2^n\)</span> elements orthonormal w.r.t. the inner product
+<span class="math display">\[
+    \langle f, g\rangle= \mathbb E_{\mathbf x\sim \mathcal P^n} [f(\mathbf x)^* g(\mathbf x)]
+\]</span>
+There exists derivative operator defined by its generator action,
+Leibniz rule, and linearity
+<span class="math display">\[
+    \partial_{i} \chi_j = \delta_{ij}, \quad \partial_{i} (fg) = (\partial_{i} f)g + f(\partial_{i} g)
+\]</span></p>
 </div>
-<div id="preface" class="section level1 unnumbered hasAnchor">
-<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Reading notes and select exercise solutions for
-Ryan O’Donnell’s book <em>Analysis of Boolean functions</em>
-<span class="citation">(<a href="#ref-o2014analysis">O’Donnell 2014</a>)</span>.</p>
-<p>In addition to being a rich field of computer science in its own right,
-the fourier analysis of boolean functions provide a classical basis
-for the fourier analysis of quantum computation.</p>
-<p>The space of boolean functions <span class="math inline">\(f(x_1, \cdots, x_n)\)</span>
-over <span class="math inline">\(n\)</span> inputs form a freely generated algebra
-in which the generators <span class="math inline">\(x_1, \cdots x_n\)</span> are involutary, commutative,
-and generate an orthonormal basis.
-Subtly generalizing these constraints yield the full qubit algebra:</p>
-<ul>
-<li>Replacing commutativity over <span class="math inline">\(x_1, \cdots, x_{2n}\)</span>
-with <em>anti-commutativity</em> yields the majorana
-algebra over a finite number of modes,
-or equivalently the qubit algebra under the Jordan-wigner transform.</li>
-<li>Supplementing <span class="math inline">\(x_1, \cdots, x_{2n}\)</span> with <span class="math inline">\(p_1, \cdots p_{2n}\)</span>
-such that <span class="math inline">\([x_i, p_j] = \delta_{ij} x_ip_j\)</span> corresponds to the Pauli
-algebra with <span class="math inline">\(x_i \mapsto X_i, p_i\mapsto Z_i\)</span>.</li>
-</ul>
-<p>These notes are organized as follows</p>
-<ol style="list-style-type: decimal">
-<li>Section <a href="Sec1.html#Sec1">1</a> corresponds to Chapters 1 &amp; 8 of the book, introducing
-fourier concepts with boolean functions then generalizing to other domains.</li>
-<li>Section <a href="influence-and-spectral-learning.html#Sec2">2.1</a> expores the stability and dependence of boolean functions.</li>
-</ol>
-<div id="notation" class="section level2 unnumbered hasAnchor">
-<h2>Notation<a href="index.html#notation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><span class="math inline">\(\mathcal P=\{\pm 1, \times\}\)</span> for parity, and <span class="math inline">\(\mathcal B=(\{0, 1\}, +)\)</span> for boolean values.<br />
-</li>
-<li><span class="math inline">\([n] \equiv \{1, \cdots, n\}\)</span>, occasionally <span class="math inline">\(\{0, \cdots, n-1\}\)</span> depending
-on context.</li>
-<li><span class="math inline">\(\Delta(x, y)=|\{i|x_i\neq y_i\}|\)</span> denotes the Hamming distance.</li>
-<li><span class="math inline">\(A\Delta B\)</span> denote the symmetric difference <span class="math inline">\((A-A\cap B)\cup (B-A\cap B)\)</span>.</li>
-<li>Boldface letters like <span class="math inline">\(\mathbf x\)</span> denote random variables, drawn from a uniform
-distribution over their domain unless otherwise specified.</li>
-<li>Under the mapping <span class="math inline">\((0, 1)\)</span> corresponding to false, true, the representation of
-truth values in <span class="math inline">\(\mathcal P\)</span> is somewhat counter-intuitively <span class="math inline">\((-1, 1)\mapsto\)</span> true, false.</li>
-<li>Given a bitstring <span class="math inline">\(x\)</span> and index <span class="math inline">\(i\)</span>, <span class="math inline">\(x^{\oplus i}\)</span> denotes <span class="math inline">\(x\)</span> with the <span class="math inline">\(i\)</span>-th index
-negated. Similarly, <span class="math inline">\(x^{i\mapsto b}\)</span> denotes <span class="math inline">\(x\)</span> with the <span class="math inline">\(i\)</span>-th index replaced by <span class="math inline">\(b\)</span>.</li>
-<li>Let <span class="math inline">\(E\)</span> denote an event, for example, <span class="math inline">\(a=b\)</span>. Then <span class="math inline">\(1_E\)</span> denotes the indicator random variable
-which is <span class="math inline">\(1\)</span> when the event is true, and <span class="math inline">\(0\)</span> otherwise.</li>
-</ul>
+<div id="general-domain" class="section level3 unnumbered hasAnchor">
+<h3>General domain<a href="quantum-analogues-of-boolean-analysis.html#general-domain" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="pauli-algebra" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Pauli algebra<a href="quantum-analogues-of-boolean-analysis.html#pauli-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Our starting point is recognizing that equation <a href="quantum-analogues-of-boolean-analysis.html#eq:booleanAlgebra">(3.1)</a> is
+exactly the commutation relation of the Pauli basis <span class="math inline">\((X_j)\)</span> or <span class="math inline">\((Z_j)\)</span>.
+We argue that <span class="math inline">\((Z_j)\)</span> is the quantum counterpart directly associated with the computational
+basis. Define the “classical” boolean function <span class="math inline">\(\tilde \rho:\mathcal P^n\to \mathbb R\)</span>
+associated with a quantum state <span class="math inline">\(\rho\)</span> to be the probability of observing <span class="math inline">\(|x\rangle\)</span>
+(note that we are using the <span class="math inline">\(\mathcal P=\pm 1\)</span> labeling of the computational basis), then
+<span class="math display">\[
+    \tilde \rho(x) = \Pr(x|\rho) = \langle x|\rho|x\rangle= \mathrm{tr}\left(\rho \prod \dfrac{1+x_j Z_j}{2}\right)
+\]</span>
+Comparing this with the classical counterpart <a href="quantum-analogues-of-boolean-analysis.html#eq:booleanDecomp">(3.2)</a> suggests that
+<span class="math inline">\(x_j\mapsto Z_j\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-36" class="definition"><strong>Definition 3.1  (Pauli quantization of boolean function) </strong></span>Given a classical boolean function <span class="math inline">\(f\)</span>, its Pauli quantization is the
+diagonal quantum state <span class="math inline">\(\rho_f\in \mathcal H_n\)</span> specified by
+<span class="math display">\[
+    \langle x|\rho|x\rangle= f(x)
+\]</span>
+This results in the following embedding of boolean function algebra into
+the Pauli algebra <span class="math inline">\(\mathcal P_n\)</span>
+<span class="math display">\[
+    x_j \mapsto Z_j, \quad \langle f, g\rangle= \mathbb E_{\mathbf x}[f(\mathbf x)g(\mathbf x)] \mapsto
+    \langle\rho_f, \rho_g\rangle= \dfrac 1 {2^n} \mathrm{tr}(\rho_f\rho_g)
+\]</span>
+The full quantum algebra <span class="math inline">\(\mathcal P_n\)</span> is generated by introducing <span class="math inline">\(n\)</span> more
+involutary generators <span class="math inline">\((X_j)\)</span> such that
+<span class="math display">\[
+    [Z_j, X_k] = 2\delta_{jk}Z_jX_j, \quad [X_j, X_k] = 0, \quad X_j^2 = 1
+\]</span></p>
+</div>
+</div>
+<div id="majorana-algebra" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Majorana algebra<a href="quantum-analogues-of-boolean-analysis.html#majorana-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another perspective on the similarity between quantum and classical computation is
+replacing the commutation relation in <a href="quantum-analogues-of-boolean-analysis.html#eq:booleanAlgebra">(3.1)</a> with anti-commutation.
+However, there appears to be no canonical way of doing so.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-37" class="definition"><strong>Definition 3.2  (Majorana algebra) </strong></span>The Majorana algebra is the Clifford algebra <span class="math inline">\(\mathcal C_{2n}\)</span> over <span class="math inline">\(2n\)</span> generators such that
+distinct generators anti-commute
+<span class="math display">\[
+    \{\gamma_j, \gamma_k\} = \delta_{jk}, \quad \gamma_j^2 = 1
+\]</span></p>
+</div>
 
-</div>
-</div>
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-o2014analysis" class="csl-entry">
-O’Donnell, Ryan. 2014. <em>Analysis of Boolean Functions</em>. Cambridge University Press.
 </div>
 </div>
             </section>
@@ -212,8 +239,8 @@ O’Donnell, Ryan. 2014. <em>Analysis of Boolean Functions</em>. Cambridge Unive
           </div>
         </div>
       </div>
-
-<a href="Sec1.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="influence-and-spectral-learning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

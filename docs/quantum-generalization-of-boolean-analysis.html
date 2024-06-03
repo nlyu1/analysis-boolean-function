@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Quantum Generalization of Boolean Analysis | Algebraic Analysis of Classical and Quantum Computation</title>
+  <meta name="description" content="3 Quantum Generalization of Boolean Analysis | Algebraic Analysis of Classical and Quantum Computation" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Quantum Generalization of Boolean Analysis | Algebraic Analysis of Classical and Quantum Computation" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Quantum Generalization of Boolean Analysis | Algebraic Analysis of Classical and Quantum Computation" />
+  
+  
+  
+
+<meta name="author" content="Nicholas Lyu" />
+
+
+<meta name="date" content="2024-06-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="influence-and-spectral-learning.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#notation"><i class="fa fa-check"></i>Notation</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="Sec1.html"><a href="Sec1.html"><i class="fa fa-check"></i><b>1</b> Fourier Expansion for General Domain</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="Sec1.html"><a href="Sec1.html#boolean-function"><i class="fa fa-check"></i><b>1.1</b> Boolean function</a>
+<ul>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#natural-and-parity-bases"><i class="fa fa-check"></i>Natural and parity bases</a></li>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#fourier-formulas"><i class="fa fa-check"></i>Fourier formulas</a></li>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#relative-densities-and-convolution"><i class="fa fa-check"></i>Relative densities and convolution</a></li>
+<li class="chapter" data-level="" data-path="Sec1.html"><a href="Sec1.html#almost-linear-functions-property-testing-and-blr"><i class="fa fa-check"></i>Almost linear functions, property testing, and BLR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html"><i class="fa fa-check"></i><b>2</b> Influence and Spectral Learning</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#Sec2"><i class="fa fa-check"></i><b>2.1</b> Influence, Noise Stablity, and Social Choice</a>
+<ul>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#social-choice-functions"><i class="fa fa-check"></i>Social choice functions</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#dependence-properties"><i class="fa fa-check"></i>Dependence properties</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#influence-derivative-and-expectation"><i class="fa fa-check"></i>Influence, derivative, and expectation</a></li>
+<li class="chapter" data-level="" data-path="influence-and-spectral-learning.html"><a href="influence-and-spectral-learning.html#total-influence"><i class="fa fa-check"></i>Total influence</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="quantum-generalization-of-boolean-analysis.html"><a href="quantum-generalization-of-boolean-analysis.html"><i class="fa fa-check"></i><b>3</b> Quantum Generalization of Boolean Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="quantum-generalization-of-boolean-analysis.html"><a href="quantum-generalization-of-boolean-analysis.html#boolean-function-algebra"><i class="fa fa-check"></i><b>3.1</b> Boolean function algebra</a>
+<ul>
+<li class="chapter" data-level="" data-path="quantum-generalization-of-boolean-analysis.html"><a href="quantum-generalization-of-boolean-analysis.html#binary-domain"><i class="fa fa-check"></i>Binary domain</a></li>
+<li class="chapter" data-level="" data-path="quantum-generalization-of-boolean-analysis.html"><a href="quantum-generalization-of-boolean-analysis.html#general-domain"><i class="fa fa-check"></i>General domain</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="quantum-generalization-of-boolean-analysis.html"><a href="quantum-generalization-of-boolean-analysis.html#pauli-algebra"><i class="fa fa-check"></i><b>3.2</b> Pauli algebra</a></li>
+<li class="chapter" data-level="3.3" data-path="quantum-generalization-of-boolean-analysis.html"><a href="quantum-generalization-of-boolean-analysis.html#majorana-algebra"><i class="fa fa-check"></i><b>3.3</b> Majorana algebra</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Algebraic Analysis of Classical and Quantum Computation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="quantum-generalization-of-boolean-analysis" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Quantum Generalization of Boolean Analysis<a href="quantum-generalization-of-boolean-analysis.html#quantum-generalization-of-boolean-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="boolean-function-algebra" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Boolean function algebra<a href="quantum-generalization-of-boolean-analysis.html#boolean-function-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="binary-domain" class="section level3 unnumbered hasAnchor">
+<h3>Binary domain<a href="quantum-generalization-of-boolean-analysis.html#binary-domain" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In addition to O’Donnell’s formalism in sections <a href="Sec1.html#Sec1">1</a> and <a href="influence-and-spectral-learning.html#Sec2">2.1</a>,
+we see that the space of boolean functions <span class="math inline">\(L^2(\mathcal P^n)\)</span>
+is in fact a finite freely-generated Hilbert algebra with <span class="math inline">\(n\)</span> generators <span class="math inline">\(x_j\in L^2(\mathcal P^n)\)</span>
+(with some convenient notation overloading)
+<span class="math display">\[
+    x_i(x) = x_i, \quad x_i:\mathcal P^n\to \mathbb C
+\]</span>
+Scalar multiplication and addition are defined in the most obvious ways,
+and algebraic multiplication given by
+<span class="math display" id="eq:booleanAlgebra">\[\begin{equation}
+    [x_i, x_j] = 0, \quad x_i^2 = 1
+    \tag{3.1}
+\end{equation}\]</span>
+Given an algebraic element <span class="math inline">\(f\)</span>, its behavior as a boolean function is retrievable by
+<span class="math display" id="eq:booleanDecomp">\[\begin{equation}
+    f(x) = 2^n\langle f, I_x\rangle= \sum_y f(y) \prod \dfrac{1+x_jy_j}{2}
+    \tag{3.2}
+\end{equation}\]</span>
+Note that the crucial <span class="math inline">\(x_i^2=1\)</span> arises from the algebraic structure of <span class="math inline">\(\mathcal P^n\)</span>.
+The generators generate the bases <span class="math inline">\((\chi_J)\)</span> of <span class="math inline">\(L^2(\mathcal P^n)\)</span>
+with <span class="math inline">\(2^n\)</span> elements orthonormal w.r.t. the inner product
+<span class="math display">\[
+    \langle f, g\rangle= \mathbb E_{\mathbf x\sim \mathcal P^n} [f(\mathbf x)^* g(\mathbf x)]
+\]</span>
+There exists derivative operator defined by its generator action,
+Leibniz rule, and linearity
+<span class="math display">\[
+    \partial_{i} \chi_j = \delta_{ij}, \quad \partial_{i} (fg) = (\partial_{i} f)g + f(\partial_{i} g)
+\]</span></p>
+</div>
+<div id="general-domain" class="section level3 unnumbered hasAnchor">
+<h3>General domain<a href="quantum-generalization-of-boolean-analysis.html#general-domain" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="pauli-algebra" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Pauli algebra<a href="quantum-generalization-of-boolean-analysis.html#pauli-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Our starting point is recognizing that equation <a href="quantum-generalization-of-boolean-analysis.html#eq:booleanAlgebra">(3.1)</a> is
+exactly the commutation relation of the Pauli basis <span class="math inline">\((X_j)\)</span> or <span class="math inline">\((Z_j)\)</span>.
+We argue that <span class="math inline">\((Z_j)\)</span> is the quantum counterpart directly associated with the computational
+basis. Define the “classical” boolean function <span class="math inline">\(\tilde \rho:\mathcal P^n\to \mathbb R\)</span>
+associated with a quantum state <span class="math inline">\(\rho\)</span> to be the probability of observing <span class="math inline">\(|x\rangle\)</span>
+(note that we are using the <span class="math inline">\(\mathcal P=\pm 1\)</span> labeling of the computational basis), then
+<span class="math display">\[
+    \tilde \rho(x) = \Pr(x|\rho) = \langle x|\rho|x\rangle= \mathrm{tr}\left(\rho \prod \dfrac{1+x_j Z_j}{2}\right)
+\]</span>
+Comparing this with the classical counterpart <a href="quantum-generalization-of-boolean-analysis.html#eq:booleanDecomp">(3.2)</a> suggests that
+<span class="math inline">\(x_j\mapsto Z_j\)</span>.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-35" class="definition"><strong>Definition 3.1  (Pauli quantization of boolean function) </strong></span>Given a classical boolean function <span class="math inline">\(f\)</span>, its Pauli quantization is the
+diagonal quantum state <span class="math inline">\(\rho_f\in \mathcal H_n\)</span> specified by
+<span class="math display">\[
+    \langle x|\rho|x\rangle= f(x)
+\]</span>
+This results in the following embedding of boolean function algebra into
+the Pauli algebra <span class="math inline">\(\mathcal P_n\)</span>
+<span class="math display">\[
+    \iota x_j = Z_j, \quad \langle f, g\rangle= \mathbb E_{\mathbf x}[f(\mathbf x)g(\mathbf x)] \mapsto
+    \langle\rho_f, \rho_g\rangle= \dfrac 1 {2^n} \mathrm{tr}(\rho_f\rho_g)
+\]</span></p>
+</div>
+</div>
+<div id="majorana-algebra" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Majorana algebra<a href="quantum-generalization-of-boolean-analysis.html#majorana-algebra" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another generalization</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="influence-and-spectral-learning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
