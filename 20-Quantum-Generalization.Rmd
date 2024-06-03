@@ -20,7 +20,7 @@ Given an algebraic element $f$, its behavior as a boolean function is retrievabl
     (\#eq:booleanDecomp)
 \end{equation}
 Note that the crucial $x_i^2=1$ arises from the algebraic structure of $\P^n$. 
-The generators generate the bases $(\chi_J)$ of $L^2(\P^n)$ 
+The generators generate the bases $(x_J)$ of $L^2(\P^n)$ 
 with $2^n$ elements orthonormal w.r.t. the inner product 
 \[ 
     \la f, g\ra = \Exp_{\mbf x\sim \P^n} [f(\mbf x)^* g(\mbf x)]
@@ -28,7 +28,7 @@ with $2^n$ elements orthonormal w.r.t. the inner product
 There exists derivative operator defined by its generator action, 
 Leibniz rule, and linearity 
 \[ 
-    \pd i \chi_j = \delta_{ij}, \quad \pd i (fg) = (\pd i f)g + f(\pd i g)
+    \pd i x_j = \delta_{ij}, \quad \pd i (fg) = (\pd i f)g + f(\pd i g)
 \] 
 
 ### General domain {-}
